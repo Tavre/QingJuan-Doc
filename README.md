@@ -19,34 +19,33 @@ npm run docs:build
 
 构建产物位于 `docs/.vitepress/dist/`。
 
-## 部署到 Cloudflare Pages
+## 部署到 Cloudflare Workers
 
-推荐在 Cloudflare Dashboard 的 **Workers & Pages** 中导入此 Git 仓库。构建设置如下：
+本站使用 **Workers Static Assets** 部署，不需要示例 Worker 脚本。Cloudflare Git 构建设置如下：
 
 | 配置项 | 值 |
 | --- | --- |
-| Framework preset | `VitePress` |
 | Root directory | `/` |
 | Build command | `npm run docs:build` |
-| Build output directory | `docs/.vitepress/dist` |
+| Deploy command | `npx wrangler deploy` |
 | Node.js | 由 `.node-version` 固定为 `22.16.0` |
 
-仓库根目录的 `wrangler.jsonc` 同时支持本机直传。首次使用先登录 Cloudflare，然后执行：
+`wrangler.jsonc` 会把 `docs/.vitepress/dist` 作为静态资源目录，并使用 VitePress 生成的 `404.html`。首次从本机发布时先登录 Cloudflare，然后执行：
 
 ```powershell
 npx wrangler login
 npm run cf:deploy
 ```
 
-Wrangler 会读取项目名 `qingjuan-docs` 和构建目录。若 Cloudflare 中使用了其他 Pages 项目名，请先修改 `wrangler.jsonc` 的 `name`。
+Wrangler 会部署名为 `qingjuan-docs` 的 Worker。若 Cloudflare 中现有 Worker 使用其他名称，请先修改 `wrangler.jsonc` 的 `name`，确保自定义域名绑定到同一个 Worker。
 
-需要在发布前模拟 Cloudflare Pages 静态服务时运行：
+发布前可使用 Workers 本地静态资源服务验证：
 
 ```powershell
 npm run cf:preview
 ```
 
-Cloudflare Pages 会为生产分支生成 `*.pages.dev` 地址。自定义域名可在 Pages 项目的 **Custom domains** 中绑定。
+如果域名仍显示 `Hello world`，请在 Cloudflare Dashboard 打开该 Worker 的 **Settings → Domains & Routes**，确认 `qj.tenkavr.com` 绑定的是上述 Worker，并重新触发一次部署。
 
 ## 内容来源
 

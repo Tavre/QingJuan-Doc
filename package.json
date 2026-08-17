@@ -7,8 +7,8 @@
     "docs:dev": "vitepress dev docs --host 127.0.0.1",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs --host 127.0.0.1",
-    "cf:preview": "npm run docs:build && wrangler pages dev docs/.vitepress/dist --ip 127.0.0.1",
-    "cf:deploy": "npm run docs:build && wrangler pages deploy docs/.vitepress/dist"
+    "cf:preview": "npm run docs:build && wrangler dev --ip 127.0.0.1 --port 8788",
+    "cf:deploy": "npm run docs:build && wrangler deploy"
   },
   "engines": {
     "node": ">=20.0.0"
