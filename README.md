@@ -37,7 +37,7 @@ npx wrangler login
 npm run cf:deploy
 ```
 
-Wrangler 会部署名为 `qingjuan-docs` 的 Worker。若 Cloudflare 中现有 Worker 使用其他名称，请先修改 `wrangler.jsonc` 的 `name`，确保自定义域名绑定到同一个 Worker。
+Wrangler 会部署名为 `qingjuan-doc` 的 Worker。若 Cloudflare 中现有 Worker 使用其他名称，请先修改 `wrangler.jsonc` 的 `name`，确保自定义域名绑定到同一个 Worker。
 
 发布前可使用 Workers 本地静态资源服务验证：
 
