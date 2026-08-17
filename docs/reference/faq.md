@@ -2,7 +2,7 @@
 
 ## Windows 可以不部署 Linux 后端吗？
 
-可以。v1.5.0 的 Windows ZIP 包含本机 FastAPI 后端。在 **设置 → 后端连接** 中选择 **本机后端**，即可在当前电脑上使用，无需 Linux 服务器、连接 Token 或另外安装 Python。
+可以。v1.6.0 的 Windows ZIP 包含本机 FastAPI 后端。在 **设置 → 后端连接** 中选择 **本机后端**，即可在当前电脑上使用，无需 Linux 服务器、连接 Token 或另外安装 Python。
 
 本机模式固定使用 `http://127.0.0.1:19453`，数据位于完整解压目录的 `backend/data/`。Android 仍需连接 Linux 后端。
 

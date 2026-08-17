@@ -9,13 +9,12 @@
         <div class="qj-hero-copy">
           <a
             class="qj-release-note"
-            href="https://github.com/Tavre/QingJuan/releases/tag/v1.5.0"
+            href="https://github.com/Tavre/QingJuan/releases/tag/v1.6.0"
             target="_blank"
             rel="noreferrer"
           >
-            <span>v1.5.0 已发布</span>
-            Windows 本机 / Linux 远程双模式现已可用
-            <span aria-hidden="true">→</span>
+            <span>v1.6.0 已发布</span>
+            20 个内置解析器与账号书架导入现已可用
           </a>
 
           <p class="qj-hero-kicker">QingJuan · 开源小说与漫画阅读工具</p>
@@ -62,7 +61,7 @@
       <div class="qj-section-heading">
         <p>一套能力，两种使用方式</p>
         <h2 id="qj-capabilities-title">从发现内容，到安静读完</h2>
-        <span>当前稳定版为 v1.5.0；源码开发分支版本为 v1.5.1。</span>
+        <span>当前稳定版为 v1.6.0，Windows 与 Android 正式安装包均已发布。</span>
       </div>
 
       <div class="qj-capability-grid">
@@ -72,11 +71,11 @@
           <p>Windows 可使用随包本机后端，也可连接 Linux；Android 保持远程客户端边界。</p>
           <span class="qj-card-link">了解后端模式 →</span>
         </a>
-        <a class="qj-capability-card" href="/guide/sources-and-search">
+        <a class="qj-capability-card" href="/guide/parsers/">
           <span class="qj-card-index">02</span>
           <h3>插件化内容解析</h3>
-          <p>当前开发版将内置站点解析器按插件组织，并与 Legado 外部书源保持清晰边界。</p>
-          <span class="qj-card-link">查看书源与插件 →</span>
+          <p>20 个内置解析器独立启停；番茄与起点支持账号登录和一键添加当前书架。</p>
+          <span class="qj-card-link">查看全部解析器 →</span>
         </a>
         <a class="qj-capability-card" href="/guide/reading-and-tts">
           <span class="qj-card-index">03</span>
@@ -149,6 +148,7 @@
           <a href="https://github.com/Tavre/QingJuan" target="_blank" rel="noreferrer">GitHub</a>
           <a href="https://github.com/Tavre/QingJuan/releases" target="_blank" rel="noreferrer">Releases</a>
           <a href="https://github.com/Tavre/QingJuan/issues" target="_blank" rel="noreferrer">Issues</a>
+          <a href="https://qm.qq.com/q/ZlhrrFKwOy" target="_blank" rel="noreferrer">加入 QQ 群</a>
         </div>
       </div>
     </footer>

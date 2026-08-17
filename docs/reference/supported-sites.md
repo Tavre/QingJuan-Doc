@@ -4,15 +4,16 @@
 
 ## 内置站点
 
-| 类型 | 当前来源 |
+| 类型 | v1.6.0 内置解析器 |
 | --- | --- |
-| 小说 | 番茄小说、哔哩轻小说、Kakuyomu、Syosetu、Novel18、Pixiv |
-| 漫画 | Webtoon、拷贝漫画、动漫之家、18Comic、Bika |
-| 自定义 | Legado / 阅读 App JSON 书源 |
+| 小说与插画 | [番茄小说](../guide/parsers/fanqie.md)、[起点中文网](../guide/parsers/qidian.md)、[Kakuyomu](../guide/parsers/kakuyomu.md)、[Syosetu](../guide/parsers/syosetu.md)、[Novel18](../guide/parsers/novel18.md)、[Hameln](../guide/parsers/hameln.md)、[Novelup](../guide/parsers/novelup.md)、[Alphapolis](../guide/parsers/alphapolis.md)、[Linovelib / Bilinovel](../guide/parsers/linovelib.md)、[Pixiv](../guide/parsers/pixiv.md) |
+| 漫画 | [18Comic](../guide/parsers/18comic.md)、[Bika Web App](../guide/parsers/bika.md)、[Pixiv Comic](../guide/parsers/pixiv-comic.md)、[Yanmaga](../guide/parsers/yanmaga.md)、[Webtoons](../guide/parsers/webtoons.md)、[Mangabz](../guide/parsers/mangabz.md)、[漫画柜](../guide/parsers/manhuagui.md)、[CopyManga](../guide/parsers/copymanga.md)、[动漫之家](../guide/parsers/dmzj.md) |
+| 通用回退 | [通用网页](../guide/parsers/generic-web.md) |
+| 自定义规则 | Legado / 阅读 App JSON 书源 |
 
 “支持”表示代码中存在相应解析或协议适配，不代表绕过登录、购买、地区或版权限制。无法合法访问的章节不会因为青卷而变得可访问。
 
-当前源码将内置站点适配拆分为可启停解析插件：Windows 本机模式在客户端 **插件配置** 中管理；Linux 远程模式在 `/admin/#plugins` 管理；Android 由服务器管理员统一维护。插件随版本发布，目前不支持在线安装、卸载或上传任意代码。
+v1.6.0 将内置站点适配拆分为 20 个可启停解析插件：Windows 本机模式在客户端 **插件配置** 中管理；Linux 远程模式在 `/admin/#plugins` 管理；Android 由服务器管理员统一维护。番茄与起点支持账号登录和书架导入，其他插件只提供各自声明的预览、章节或搜索能力。插件随版本发布，目前不支持在线安装、卸载或上传任意代码。
 
 ## 本地导入
 

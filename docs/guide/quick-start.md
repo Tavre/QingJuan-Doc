@@ -8,7 +8,7 @@
 
 从 [GitHub Releases](https://github.com/Tavre/QingJuan/releases/latest) 下载：
 
-- `QingJuan-v1.5.0-windows-x64.zip`
+- `QingJuan-v1.6.0-windows-x64.zip`
 - 对应的 `.sha256` 校验文件
 
 完整解压 ZIP 后运行 `qingjuan.exe`。不要只从压缩包预览窗口运行，也不要单独移动 EXE 或删除 `backend/` 目录。
@@ -38,7 +38,8 @@ Windows 本机数据位于完整解压目录的 `backend/data/`。移动、更�
 
 - 打开 **搜索**，从已启用书源中找到作品并加入书架；
 - 打开 **我的书架**，导入本地 `TXT`、`DOCX`、`EPUB` 或 `PDF`；
-- 打开 **书源**，导入 Legado / 阅读 App JSON 书源。
+- 打开 **书源**，导入 Legado / 阅读 App JSON 书源；
+- 打开 **插件配置**，登录番茄或起点并一键添加当前账号书架。
 
 下载或翻译会创建后台任务，可在 **任务中心** 查看进度、错误和重试状态。
 
@@ -65,7 +66,7 @@ sudo qingjuan-info
 ### 2. 安装并连接客户端
 
 - Windows：解压 Windows ZIP，可在设置中选择 **Linux 远程后端**；
-- Android：安装 `QingJuan-v1.5.0-android.apk`。
+- Android：安装 `QingJuan-v1.6.0-android.apk`。
 
 在 **设置 → 后端连接** 中填写 `qingjuan-info` 显示的 FastAPI 地址和连接 Token，然后保存。地址末尾不要添加 `/api/v1`。
 

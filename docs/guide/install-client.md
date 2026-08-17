@@ -6,7 +6,7 @@
 
 打开 [QingJuan Releases](https://github.com/Tavre/QingJuan/releases/latest)，下载与你的平台对应的主文件和 `.sha256` 校验文件。
 
-本页按 `v1.5.0` 编写。使用远程模式时，建议客户端与服务端采用同一版本；如果只更新其中一端，完成后至少重新验证连接、导入、阅读和文件导出。
+本页按 `v1.6.0` 编写。使用远程模式时，建议客户端与服务端采用同一版本；如果只更新其中一端，完成后至少重新验证连接、导入、阅读和文件导出。
 
 ## 校验下载文件
 
@@ -15,15 +15,15 @@
 Windows PowerShell：
 
 ```powershell
-Get-FileHash .\QingJuan-v1.5.0-windows-x64.zip -Algorithm SHA256
-Get-Content .\QingJuan-v1.5.0-windows-x64.zip.sha256
+Get-FileHash .\QingJuan-v1.6.0-windows-x64.zip -Algorithm SHA256
+Get-Content .\QingJuan-v1.6.0-windows-x64.zip.sha256
 ```
 
 Android APK 也可以在电脑上校验：
 
 ```powershell
-Get-FileHash .\QingJuan-v1.5.0-android.apk -Algorithm SHA256
-Get-Content .\QingJuan-v1.5.0-android.apk.sha256
+Get-FileHash .\QingJuan-v1.6.0-android.apk -Algorithm SHA256
+Get-Content .\QingJuan-v1.6.0-android.apk.sha256
 ```
 
 两处显示的 64 位十六进制摘要应一致。Linux 或 macOS 可使用 `sha256sum -c <校验文件名>`。
