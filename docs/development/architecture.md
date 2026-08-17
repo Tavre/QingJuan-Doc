@@ -1,0 +1,64 @@
+# 架构与边界
+
+青卷以“客户端薄、当前后端持有状态”为核心。Windows 可选择随包本机后端或 Linux 远程后端，Android 只使用远程后端。所有需要 Python、SQLite、抓取、OCR 或服务凭据的工作都留在当前选中的后端。
+
+## 总体依赖
+
+```text
+Flutter 页面与 Widget
+        ↓
+Controller / AppState
+        ↓
+Repository / API Client
+        ↓  本机回环 HTTP，或 HTTPS / 私网 HTTP + Bearer Token
+FastAPI Router
+        ↓
+领域服务 / 任务执行器 / 存储
+        ↓
+SQLite、文件、第三方站点、OpenAI 兼容服务
+```
+
+上层可以依赖下层公开接口，下层不能反向引用页面或控件。页面不直接拼接 HTTP、解析任意 JSON 或操作服务端路径。
+
+## 客户端边界
+
+- Windows 与 Android 共用 `lib/` 中的业务、模型和 Controller，但维护不同的顶层导航与平台呈现；
+- 平台 Runner 只负责 Flutter 引擎、生命周期和必要系统集成；
+- Android 不复制 Dart 业务，不申请广泛存储权限；
+- 客户端只保存非敏感偏好和平台安全存储保护的远程 Token；
+- 只有 Windows 本机后端生命周期基础设施可以启动、探测和回收随包后端；Widget、Controller 与 Android 代码不得操作 Python 进程。
+
+应用退出时可回收当前客户端启动的 Windows 本机后端，但不得影响外部进程或 Linux 服务。
+
+## 后端边界
+
+- Router 负责 HTTP 校验与 DTO，不承载长业务；
+- Site Plugin 按站点声明匹配、能力与运行处理器，并与共享抓取基础设施分离；
+- 领域服务负责抓取、导入、导出、翻译和任务状态；
+- 持久化统一受数据目录和路径边界约束；
+- 长任务拥有稳定 ID、进度、状态和脱敏日志；
+- 外部请求必须设置超时、限制并发并处理站点变化；
+- 单个任务失败不得终止整个进程。
+
+## 管理界面边界
+
+React 管理界面管理当前 FastAPI 后端的服务概览、书库、任务、书源、站点插件和模型设置。它以构建后的静态资源提交到 `python-backend/app/admin_static/`；Windows 本机后端和 Linux 远程后端共用同一套静态资源。
+
+## 安全边界
+
+- 远程客户端 API 使用 Bearer Token；Windows 本机无 Token 服务只监听固定回环地址；
+- 管理界面使用独立密码、签名会话和 CSRF；
+- 翻译 API 密钥保存在服务端且不回传明文；
+- Token 不发送到第三方封面、书源或跨源重定向；
+- 日志不包含凭据、正文和服务器绝对路径；
+- APK、Windows ZIP 和管理静态资源不包含生产数据或签名材料。
+
+## 不兼容变更
+
+不得无迁移说明地破坏后端数据、导入导出格式、阅读进度和设置。确需变更时，在同一 Pull Request 中提供：
+
+- 新旧格式和影响范围；
+- 自动或手工迁移路径；
+- 回滚方式；
+- 固定样本测试；
+- 用户可读升级说明。

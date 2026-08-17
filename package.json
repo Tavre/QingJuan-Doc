@@ -1,0 +1,23 @@
+{
+  "name": "qingjuan-docs",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev docs --host 127.0.0.1",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs --host 127.0.0.1",
+    "cf:preview": "npm run docs:build && wrangler pages dev docs/.vitepress/dist --ip 127.0.0.1",
+    "cf:deploy": "npm run docs:build && wrangler pages deploy docs/.vitepress/dist"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "vitepress": "1.6.4",
+    "wrangler": "4.123.0"
+  },
+  "overrides": {
+    "vite": "6.4.3"
+  }
+}
