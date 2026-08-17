@@ -43,6 +43,33 @@ export default defineConfig({
             { text: '翻译', link: '/guide/translation' },
             { text: '任务与导出', link: '/guide/tasks-and-export' }
           ]
+        },
+        {
+          text: '内置解析器',
+          collapsed: true,
+          items: [
+            { text: '解析器总览', link: '/guide/parsers/' },
+            { text: '番茄小说', link: '/guide/parsers/fanqie' },
+            { text: '起点中文网', link: '/guide/parsers/qidian' },
+            { text: 'Kakuyomu', link: '/guide/parsers/kakuyomu' },
+            { text: 'Syosetu', link: '/guide/parsers/syosetu' },
+            { text: 'Novel18', link: '/guide/parsers/novel18' },
+            { text: 'Hameln', link: '/guide/parsers/hameln' },
+            { text: 'Novelup', link: '/guide/parsers/novelup' },
+            { text: 'Alphapolis', link: '/guide/parsers/alphapolis' },
+            { text: 'Linovelib / Bilinovel', link: '/guide/parsers/linovelib' },
+            { text: 'Pixiv', link: '/guide/parsers/pixiv' },
+            { text: '18Comic', link: '/guide/parsers/18comic' },
+            { text: 'Bika Web App', link: '/guide/parsers/bika' },
+            { text: 'Pixiv Comic', link: '/guide/parsers/pixiv-comic' },
+            { text: 'Yanmaga', link: '/guide/parsers/yanmaga' },
+            { text: 'Webtoons', link: '/guide/parsers/webtoons' },
+            { text: 'Mangabz', link: '/guide/parsers/mangabz' },
+            { text: '漫画柜', link: '/guide/parsers/manhuagui' },
+            { text: 'CopyManga', link: '/guide/parsers/copymanga' },
+            { text: '动漫之家', link: '/guide/parsers/dmzj' },
+            { text: '通用网页', link: '/guide/parsers/generic-web' }
+          ]
         }
       ],
       '/server/': [
