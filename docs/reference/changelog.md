@@ -2,13 +2,43 @@
 
 这里记录青卷各版本面向用户的主要变化。GitHub 公开 Release 记录从 v1.1.0 开始；日期按中国标准时间列出，只有已创建 Git 标签和 GitHub Release 的版本才标记为“已发布”。
 
-## v1.7.0（发布候选）
+## v1.7.1（发布构建中）
 
-源码版本为 `1.7.0+21`，更新于 2026-08-19。[查看发布 PR #35](https://github.com/qingscroll/QingJuan/pull/35)
+源码版本为 `1.7.1+22`，发布准备于 2026-08-19 合并到主分支。[查看 PR #36](https://github.com/qingscroll/QingJuan/pull/36)
 
-::: warning 尚未正式发布
-当前稳定版仍是 v1.6.0。v1.7.0 的代码和跨平台 CI 已就绪，但 GitHub 尚未创建 `v1.7.0` 标签、Release 和正式安装包。
+::: warning 发布流程进行中
+当前可下载的稳定版仍是 v1.7.0。v1.7.1 的代码已经进入主分支，正式标签、Release 和安装包完成前，请继续从 latest 页面下载 v1.7.0。
 :::
+
+### Android 界面修复
+
+- 修复作品详情页标题侵入状态栏、顶部操作错位，以及部分独立路由未正确处理系统安全区的问题；
+- 修复搜索页和书架列表在手机窄屏下的内容裁切、组件溢出与状态反馈布局，Windows 桌面布局保持不变；
+- 统一移动端页面表面与轻量动画，移除滚动区域中的高成本模糊效果，并减少滚动期间的重复布局计算。
+
+### 夸克导入
+
+- 夸克目录请求增加限流和 HTTP 502 / 503 / 504 临时网关错误的有界重试，不再向客户端直接显示 HTML 错误页；
+- Android 从搜索结果加入书架时改用异步链接任务并轮询完成，补齐失败、取消与超时状态，避免长目录抓取被误判为失败；
+- 完整目录请求增加短时缓存并合并并发访问，让预览、导入与首次按需阅读复用同一目录；
+- 继续只处理公开且明确可读的免费章节，不接入登录 Cookie、付费章节或试读回退。
+
+### 阅读流畅度与高刷新率
+
+- 阅读器缓存分页和文本测量结果，减少翻页、字号调整与连续滑动时的重复计算；
+- 翻页动画改为轻量位移，正文选择区域和段落渲染减少逐帧重建，改善长章节滚动与分页切换；
+- Android 优先请求同分辨率下不高于 120Hz 的最高显示模式；设备只提供更高档位时选择最接近 120Hz 的模式，实际刷新率仍由系统决定。
+
+### 验证与升级
+
+- `pubspec.yaml`、Android、Windows 与 FastAPI 共用 `1.7.1+22` 版本源；
+- 固定 Flutter 3.24.3 下执行格式检查、Analyzer、完整 Flutter 测试与 Android Profile 构建；Python Ruff 和完整 Pytest 套件通过；
+- 60Hz Android 模拟器完成安装、启动和持续滑动帧耗时抽样；120Hz 真机仍需在支持高刷新率的实体设备上验证；
+- 可直接读取 v1.7.0 数据，不涉及数据库或导入格式迁移；Android 仍只连接 Linux，Windows 后端模式不变。
+
+## v1.7.0
+
+发布于 2026-08-19，版本号为 `1.7.0+21`。[查看 Release](https://github.com/qingscroll/QingJuan/releases/tag/v1.7.0) · [查看 PR #35](https://github.com/qingscroll/QingJuan/pull/35)
 
 ### Android 阅读产品界面
 
@@ -38,7 +68,7 @@
 
 - 固定 Flutter 3.24.3 下通过格式检查、Analyzer 和 123 项 Flutter 测试；Python Ruff、Compileall 和完整 Pytest 套件通过；
 - 发布 PR 的 Flutter、Python、React 管理界面、Linux 原生部署、Android APK 和 Windows x64 六项检查均已通过；
-- 正式 Windows ZIP、签名 Android APK 与 SHA-256 文件要等合并并推送 `v1.7.0` 标签后生成。
+- 正式 Release 已提供 Windows x64 ZIP、签名 Android APK 与两份 SHA-256 文件。
 
 ## v1.6.0
 
