@@ -4,9 +4,9 @@
 
 ## 下载
 
-打开 [QingJuan Releases](https://github.com/Tavre/QingJuan/releases/latest)，下载与你的平台对应的主文件和 `.sha256` 校验文件。
+打开 [QingJuan Releases](https://github.com/qingscroll/QingJuan/releases/latest)，下载与你的平台对应的主文件和 `.sha256` 校验文件。
 
-本页按 `v1.6.0` 编写。使用远程模式时，建议客户端与服务端采用同一版本；如果只更新其中一端，完成后至少重新验证连接、导入、阅读和文件导出。
+本页的正式安装包文件名仍按稳定版 `v1.6.0` 编写。源码中的 `v1.7.0+21` 是发布候选；只有 GitHub 出现 `v1.7.0` Release 和正式资产后，才改用新文件名。使用远程模式时，建议客户端与服务端采用同一版本；如果只更新其中一端，完成后至少重新验证连接、导入、阅读和文件导出。
 
 ## 校验下载文件
 

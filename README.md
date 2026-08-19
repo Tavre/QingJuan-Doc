@@ -1,6 +1,6 @@
 # 青卷文档站
 
-这是 [青卷 QingJuan](https://github.com/Tavre/QingJuan) 的中文 VitePress 文档站，内容覆盖 Windows 本机模式、Linux 远程服务、Android 客户端、运维和贡献开发。
+这是 [青卷 QingJuan](https://github.com/qingscroll/QingJuan) 的中文 VitePress 文档站，内容覆盖 Windows 本机模式、Linux 远程服务、Android 客户端、运维和贡献开发。
 
 ## 本地运行
 

@@ -1,13 +1,14 @@
 # 内置解析器
 
-青卷 v1.6.0 随后端提供 20 个内置站点解析器。每个解析器都有独立的稳定 ID、匹配域名、作品类型、能力和启停状态；它们与用户导入的 Legado / 阅读 App JSON 书源相互独立。
+青卷 v1.7.0 源码候选随后端提供 22 个内置站点解析器。每个解析器都有独立的稳定 ID、匹配域名、作品类型、能力和启停状态；它们与用户导入的 Legado / 阅读 App JSON 书源相互独立。当前可下载的稳定版仍是 v1.6.0。
 
 ## 解析器清单
 
 | 类型 | 解析器 | 插件 ID | 匹配域名 | 额外能力 |
 | --- | --- | --- | --- | --- |
 | 小说 | [番茄小说](./fanqie.md) | `fanqie` | `fanqienovel.com` | 搜索、按需下载、扫码 / Cookie 登录、账号书架 |
-| 小说 | [起点中文网](./qidian.md) | `qidian` | `qidian.com` | 按需下载、扫码登录、账号书架 |
+| 小说 | [起点中文网](./qidian.md) | `qidian` | `qidian.com` | 搜索、按需下载、扫码登录、账号书架 |
+| 小说 | [夸克小说](./quark.md) | `quark` | `shuqi.com`、`novel.quark.cn` | 匿名搜索、按需读取免费完整章节 |
 | 小说 | [Kakuyomu](./kakuyomu.md) | `kakuyomu` | `kakuyomu.jp` | 搜索 |
 | 小说 | [Syosetu](./syosetu.md) | `syosetu` | `syosetu.com` | 公开作品目录与章节 |
 | 小说 | [Novel18](./novel18.md) | `novel18` | `novel18.syosetu.com` | 年龄限制站点的公开内容 |
@@ -23,15 +24,16 @@
 | 漫画 | [Webtoons](./webtoons.md) | `webtoons` | `webtoons.com` | 通用漫画页适配 |
 | 漫画 | [Mangabz](./mangabz.md) | `mangabz` | `mangabz.com` | 通用漫画页适配 |
 | 漫画 | [漫画柜](./manhuagui.md) | `manhuagui` | `manhuagui.com` | 通用漫画页适配 |
-| 漫画 | [CopyManga](./copymanga.md) | `copymanga` | `copymanga.com`、`copymanga.site` | 通用漫画页适配 |
+| 漫画 | [拷贝漫画](./copymanga.md) | `copymanga` | `mangacopy.com`、`copymanga.com`、`copymanga.site` | 公开搜索、分组目录与漫画页 |
+| 漫画 | [COMICORES 漫核](./comicores.md) | `comicores` | `comicores.cc` | 公开搜索与元数据；不提供章节 |
 | 漫画 | [动漫之家](./dmzj.md) | `dmzj` | `dmzj.com` | 通用漫画页适配 |
 | 通用 | [通用网页](./generic-web.md) | `generic-web` | 任意 HTTP / HTTPS 地址 | 无专用插件时最后回退 |
 
 ## 能力是什么意思
 
-- **预览**：读取作品标题、作者、封面和目录等可用元数据；
+- **预览**：读取作品标题、作者、封面等可用元数据；预览能力不表示一定有目录或章节；
 - **章节**：读取当前网络和账号有权访问的章节正文或图片；
-- **搜索**：可直接在青卷搜索页查询该站点；没有搜索能力的解析器仍可通过作品链接导入；
+- **搜索**：解析器后端可以查询作品。v1.7.0 主搜索页直接提供“书源、夸克、番茄、起点”四项；其他标注搜索的解析器暂不单列为主搜索引擎；
 - **按需下载**：先保存目录，阅读时缓存当前章节并预取后续章节；
 - **账号登录 / 书架导入**：当前仅番茄与起点支持，详见[账号书架流程](../sources-and-search.md#番茄与起点账号书架)。
 
