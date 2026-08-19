@@ -6,10 +6,12 @@
 
 ### 1. 下载并解压
 
-从 [GitHub Releases](https://github.com/Tavre/QingJuan/releases/latest) 下载：
+从 [GitHub Releases](https://github.com/qingscroll/QingJuan/releases/latest) 下载：
 
 - `QingJuan-v1.6.0-windows-x64.zip`
 - 对应的 `.sha256` 校验文件
+
+当前正式下载版本仍是 v1.6.0。源码中的 v1.7.0+21 是发布候选，等待 GitHub 发布正式 Release 后再按新版本文件名下载。
 
 完整解压 ZIP 后运行 `qingjuan.exe`。不要只从压缩包预览窗口运行，也不要单独移动 EXE 或删除 `backend/` 目录。
 
@@ -51,7 +53,7 @@ Android 不包含本机后端。Android，或希望 Windows 与 Android 共用�
 
 ```bash
 sudo mkdir -p /opt/qingjuan
-sudo git clone https://github.com/Tavre/QingJuan.git /opt/qingjuan/app
+sudo git clone https://github.com/qingscroll/QingJuan.git /opt/qingjuan/app
 cd /opt/qingjuan/app
 sudo bash deploy/linux/install.sh
 sudo qingjuan-info

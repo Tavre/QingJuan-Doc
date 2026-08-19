@@ -9,12 +9,10 @@
         <div class="qj-hero-copy">
           <a
             class="qj-release-note"
-            href="https://github.com/Tavre/QingJuan/releases/tag/v1.6.0"
-            target="_blank"
-            rel="noreferrer"
+            href="/reference/changelog"
           >
-            <span>v1.6.0 已发布</span>
-            20 个内置解析器与账号书架导入现已可用
+            <span>v1.7.0 发布候选</span>
+            新增夸克、COMICORES 与四引擎搜索
           </a>
 
           <p class="qj-hero-kicker">QingJuan · 开源小说与漫画阅读工具</p>
@@ -40,7 +38,7 @@
 
         <a
           class="qj-download-panel"
-          href="https://github.com/Tavre/QingJuan/releases/latest"
+          href="https://github.com/qingscroll/QingJuan/releases/latest"
           target="_blank"
           rel="noreferrer"
           aria-label="前往 GitHub Releases 下载青卷应用"
@@ -61,7 +59,7 @@
       <div class="qj-section-heading">
         <p>一套能力，两种使用方式</p>
         <h2 id="qj-capabilities-title">从发现内容，到安静读完</h2>
-        <span>当前稳定版为 v1.6.0，Windows 与 Android 正式安装包均已发布。</span>
+        <span>当前稳定版为 v1.6.0；源码发布候选为 v1.7.0+21。</span>
       </div>
 
       <div class="qj-capability-grid">
@@ -74,13 +72,13 @@
         <a class="qj-capability-card" href="/guide/parsers/">
           <span class="qj-card-index">02</span>
           <h3>插件化内容解析</h3>
-          <p>20 个内置解析器独立启停；番茄与起点支持账号登录和一键添加当前书架。</p>
+          <p>22 个内置解析器独立启停；搜索页可在书源、夸克、番茄与起点之间切换。</p>
           <span class="qj-card-link">查看全部解析器 →</span>
         </a>
         <a class="qj-capability-card" href="/guide/reading-and-tts">
           <span class="qj-card-index">03</span>
           <h3>为平台分别设计</h3>
-          <p>Windows 保持 Fluent 桌面体验，Android 使用触控优先界面，共享业务但不混用布局。</p>
+          <p>Windows 保持 Fluent 桌面体验；Android 使用清澈蓝移动界面、固定五入口导航与共享底部面板。</p>
           <span class="qj-card-link">了解阅读体验 →</span>
         </a>
       </div>
@@ -145,9 +143,9 @@
         </div>
         <div>
           <strong>项目</strong>
-          <a href="https://github.com/Tavre/QingJuan" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="https://github.com/Tavre/QingJuan/releases" target="_blank" rel="noreferrer">Releases</a>
-          <a href="https://github.com/Tavre/QingJuan/issues" target="_blank" rel="noreferrer">Issues</a>
+          <a href="https://github.com/qingscroll/QingJuan" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://github.com/qingscroll/QingJuan/releases" target="_blank" rel="noreferrer">Releases</a>
+          <a href="https://github.com/qingscroll/QingJuan/issues" target="_blank" rel="noreferrer">Issues</a>
           <a href="https://qm.qq.com/q/ZlhrrFKwOy" target="_blank" rel="noreferrer">加入 QQ 群</a>
         </div>
       </div>

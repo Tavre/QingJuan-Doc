@@ -6,7 +6,7 @@
 
 ```bash
 sudo mkdir -p /opt/qingjuan
-sudo git clone https://github.com/Tavre/QingJuan.git /opt/qingjuan/app
+sudo git clone https://github.com/qingscroll/QingJuan.git /opt/qingjuan/app
 cd /opt/qingjuan/app
 sudo bash deploy/linux/install.sh
 sudo qingjuan-info

@@ -19,9 +19,14 @@ export default defineConfig({
     logo: '/logo.png',
     siteTitle: '青卷 QingJuan',
     nav: [
-      { text: 'Docs', link: '/guide/quick-start', activeMatch: '^/(guide|server|development|reference)/' },
-      { text: 'GitHub', link: 'https://github.com/Tavre/QingJuan' },
-      { text: '下载应用', link: 'https://github.com/Tavre/QingJuan/releases/latest' }
+      {
+        text: 'Docs',
+        link: '/guide/quick-start',
+        activeMatch: '^/(guide|server|development)/|^/reference/(supported-sites|commands|faq)'
+      },
+      { text: '更新日志', link: '/reference/changelog', activeMatch: '^/reference/changelog' },
+      { text: 'GitHub', link: 'https://github.com/qingscroll/QingJuan' },
+      { text: '下载应用', link: 'https://github.com/qingscroll/QingJuan/releases/latest' }
     ],
     sidebar: {
       '/guide/': [
@@ -51,6 +56,7 @@ export default defineConfig({
             { text: '解析器总览', link: '/guide/parsers/' },
             { text: '番茄小说', link: '/guide/parsers/fanqie' },
             { text: '起点中文网', link: '/guide/parsers/qidian' },
+            { text: '夸克小说', link: '/guide/parsers/quark' },
             { text: 'Kakuyomu', link: '/guide/parsers/kakuyomu' },
             { text: 'Syosetu', link: '/guide/parsers/syosetu' },
             { text: 'Novel18', link: '/guide/parsers/novel18' },
@@ -66,7 +72,8 @@ export default defineConfig({
             { text: 'Webtoons', link: '/guide/parsers/webtoons' },
             { text: 'Mangabz', link: '/guide/parsers/mangabz' },
             { text: '漫画柜', link: '/guide/parsers/manhuagui' },
-            { text: 'CopyManga', link: '/guide/parsers/copymanga' },
+            { text: '拷贝漫画', link: '/guide/parsers/copymanga' },
+            { text: 'COMICORES 漫核', link: '/guide/parsers/comicores' },
             { text: '动漫之家', link: '/guide/parsers/dmzj' },
             { text: '通用网页', link: '/guide/parsers/generic-web' }
           ]
@@ -123,7 +130,7 @@ export default defineConfig({
             { text: '支持范围', link: '/reference/supported-sites' },
             { text: '常用命令', link: '/reference/commands' },
             { text: '常见问题', link: '/reference/faq' },
-            { text: '版本记录', link: '/reference/changelog' }
+            { text: '更新日志', link: '/reference/changelog' }
           ]
         }
       ]

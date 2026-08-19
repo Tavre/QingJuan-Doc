@@ -1,6 +1,6 @@
 # 开发概览
 
-青卷是一个多技术栈仓库：Windows Flutter 客户端可使用随包本机 FastAPI 后端或 Linux 远程后端，Android 只连接 Linux；两端共享业务能力但保持独立的平台界面，React 管理界面随当前后端以静态资源发布。当前发布基线为 `1.6.0+20`，包含统一站点插件、番茄 / 起点账号书架导入和客户端动效、渲染更新。
+青卷是一个多技术栈仓库：Windows Flutter 客户端可使用随包本机 FastAPI 后端或 Linux 远程后端，Android 只连接 Linux；两端共享业务能力但保持独立的平台界面，React 管理界面随当前后端以静态资源发布。当前稳定版是 `1.6.0+20`，仓库发布候选是 `1.7.0+21`。候选版统一 Android 阅读产品界面与移动端底部面板，增加四引擎搜索，并将内置解析器扩展到 22 个。
 
 ## 完整开发规范
 
@@ -14,7 +14,7 @@
 - [质量与测试](./05-quality-and-testing.md)
 - [工作流、发布与迁移](./06-workflow-and-migration.md)
 
-源码仓库的 [`docs/development/`](https://github.com/Tavre/QingJuan/tree/main/docs/development) 仍是工程规范的唯一权威来源；本站副本用于发布和阅读。发生冲突时，以源码仓库当前文档和实现为准。
+源码仓库的 [`docs/development/`](https://github.com/qingscroll/QingJuan/tree/main/docs/development) 仍是工程规范的唯一权威来源；本站副本用于发布和阅读。发生冲突时，以源码仓库当前文档和实现为准。
 
 架构或依赖方向发生变化时，应先更新权威开发文档，再编写实现和同步本站。
 
@@ -60,4 +60,4 @@ QingJuan/
 6. 确认 `git status` 不含凭据、缓存、数据库、构建产物或个人数据；
 7. 提交 Pull Request，并清楚列出真实执行过的检查。
 
-源码与问题跟踪位于 [Tavre/QingJuan](https://github.com/Tavre/QingJuan)。安全问题请通过 GitHub **Security → Report a vulnerability** 私密报告。
+源码与问题跟踪位于 [qingscroll/QingJuan](https://github.com/qingscroll/QingJuan)。安全问题请通过 GitHub **Security → Report a vulnerability** 私密报告。
