@@ -2,6 +2,34 @@
 
 这里记录青卷各版本面向用户的主要变化。GitHub 公开 Release 记录从 v1.1.0 开始；日期按中国标准时间列出，只有已创建 Git 标签和 GitHub Release 的版本才标记为“已发布”。
 
+## v1.7.4
+
+发布于 2026-08-20，版本号为 `1.7.4+25`。[查看 Release](https://github.com/qingscroll/QingJuan/releases/tag/v1.7.4) · [查看 PR #39](https://github.com/qingscroll/QingJuan/pull/39)
+
+### 小说阅读排版
+
+- 小说段落统一使用稳定的两字首行缩进和两端对齐，短段与自动换行长段的首字保持在同一位置；
+- 换行续行和跨页续行不会重复缩进，分页、上下滚动和 Windows 阅读器共用同一段落规范化规则；
+- 客户端会先清理上游段首空白，再应用统一排版，避免不同站点的空格数量造成正文左右漂移。
+
+### Android 系统栏与音量键阅读
+
+- Android 打开阅读器后自动隐藏顶部时间状态栏，同时保留底部导航或手势区；应用内控制层显隐不再改变正文安全区或分页结果；
+- 阅读设置中的开关明确为“音量键滑动 / 翻页”：上下滚动模式按约一屏距离移动，左右分页模式切换上一页或下一页；
+- 到达章节边界时，同一次按键会等待相邻章节装入并继续移动；从章首向上时可直接定位到上一章末屏。
+
+### Token 输入
+
+- Android 连接 Token 密码框继续保留原生选区，并在字段旁提供明确的“粘贴”按钮，解决部分系统长按菜单无法粘贴的问题；
+- 粘贴操作只读取纯文本并写入当前输入框，不记录、回显或上传剪贴板内容。
+
+### 发布与升级
+
+- `pubspec.yaml`、Android、Windows 与 FastAPI 已统一为 `1.7.4+25`；
+- PR 与主分支 CI 均成功，PR 验证包含 141 项 Flutter 测试、233 项 Pytest、25 项管理端测试，以及 Android Debug 和 Windows x64 构建；
+- v1.7.4 可直接读取 v1.7.3 的 Windows 本机或 Linux 后端数据，不涉及数据库或导入格式迁移；
+- 标签发布工作流成功，正式 Release 已提供 `QingJuan-v1.7.4-windows-x64.zip`、`QingJuan-v1.7.4-android.apk` 与两份 SHA-256 校验文件；Release 不是草稿或预发布。
+
 ## v1.7.3
 
 发布于 2026-08-20，版本号为 `1.7.3+24`。[查看 Release](https://github.com/qingscroll/QingJuan/releases/tag/v1.7.3) · [查看 PR #38](https://github.com/qingscroll/QingJuan/pull/38)

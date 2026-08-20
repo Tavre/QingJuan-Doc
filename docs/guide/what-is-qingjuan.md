@@ -32,12 +32,13 @@ Windows 与 Android 共享业务能力，但不共用同一套顶层布局：
 - Android 使用清澈蓝、纯白表面和冷浅灰背景，底部导航固定为“书架、搜索、书源、任务、我的”；v1.7.2 将导航升级为范围受控的悬浮液态玻璃表面；
 - Android 的导入、插件配置和设置使用同一套移动端底部面板，统一处理键盘、安全区、返回关闭和减少动态效果；
 - v1.7.3 在手机详情页完整保留超长书籍简介，并关闭文本输入放大镜，同时保留选择、复制、粘贴和上下文菜单；
+- v1.7.4 统一小说段落缩进和两端对齐，阅读时隐藏 Android 顶部状态栏，并完善音量键滑动、翻页与 Token 粘贴；
 - 调整窗口宽度只会改变当前平台内部的排版，不会把 Windows 界面切换成 Android 布局。
 
 v1.7.0 包含 22 个可独立启停的内置解析器，新增夸克小说和 COMICORES，并在搜索页提供书源、夸克、番茄、起点四种引擎。Windows 本机模式在客户端 **插件配置** 中管理；Linux 远程模式在服务器管理界面的 **插件管理** 中管理，Android 不显示本地插件入口。完整清单见[内置解析器](./parsers/)。
 
 ::: info 版本状态
-当前可下载的稳定版是 [v1.7.3](https://github.com/qingscroll/QingJuan/releases/tag/v1.7.3)，版本号为 `1.7.3+24`。正式 Release 已提供 Windows x64 ZIP、Android APK 与两份 SHA-256 校验文件。
+当前可下载的稳定版是 [v1.7.4](https://github.com/qingscroll/QingJuan/releases/tag/v1.7.4)，版本号为 `1.7.4+25`。正式 Release 已提供 Windows x64 ZIP、Android APK 与两份 SHA-256 校验文件。
 :::
 
 ## 适合谁
