@@ -525,6 +525,8 @@ body:has(.qj-landing) .VPHome > .vp-doc.container {
 
 .qj-section-heading,
 .qj-capability-grid,
+.qj-interface-preview-grid,
+.qj-interface-preview-link,
 .qj-workflow-copy,
 .qj-workflow-panels,
 .qj-home-footer {
@@ -614,6 +616,107 @@ body:has(.qj-landing) .VPHome > .vp-doc.container {
   color: var(--qj-landing-blue);
   font-size: 14px;
   font-weight: 700;
+}
+
+.qj-interface-preview {
+  border-top: 1px solid var(--qj-landing-border);
+  background:
+    radial-gradient(circle at 14% 38%, rgba(95, 178, 178, 0.14), transparent 34%),
+    radial-gradient(circle at 86% 48%, rgba(72, 119, 187, 0.13), transparent 34%),
+    var(--qj-landing-bg);
+}
+
+.qj-interface-preview-grid {
+  display: grid;
+  margin-top: 58px;
+  grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.7fr);
+  gap: 20px;
+}
+
+.qj-interface-preview-card {
+  display: flex;
+  min-height: 620px;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--qj-landing-border);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: 0 28px 70px rgba(38, 71, 101, 0.08);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.dark .qj-interface-preview-card {
+  background: rgba(19, 31, 43, 0.72);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.2);
+}
+
+.qj-interface-preview-card:hover {
+  border-color: rgba(50, 103, 186, 0.28);
+  box-shadow: 0 32px 78px rgba(38, 71, 101, 0.13);
+  transform: translateY(-4px);
+}
+
+.qj-interface-preview-card > div {
+  padding: 32px 34px 26px;
+}
+
+.qj-interface-preview-card span {
+  display: block;
+  color: var(--qj-landing-blue);
+  font-size: 12px;
+  font-weight: 760;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.qj-interface-preview-card strong {
+  display: block;
+  margin-top: 14px;
+  color: var(--qj-landing-ink);
+  font-size: 27px;
+  font-weight: 620;
+}
+
+.qj-interface-preview-card p {
+  max-width: 620px;
+  margin: 12px 0 0;
+  color: var(--qj-landing-muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.qj-interface-preview-card img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: auto;
+  object-fit: contain;
+}
+
+.qj-interface-preview-desktop img {
+  width: calc(100% - 48px);
+  margin-right: 24px;
+  margin-bottom: 24px;
+  margin-left: 24px;
+  border: 1px solid var(--qj-landing-border);
+  border-radius: 16px;
+  box-shadow: 0 18px 46px rgba(22, 43, 64, 0.18);
+}
+
+.qj-interface-preview-mobile img {
+  width: min(82%, 320px);
+  max-height: 470px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.qj-interface-preview-link {
+  display: block;
+  margin-top: 30px;
+  color: var(--qj-landing-blue) !important;
+  font-size: 14px;
+  font-weight: 720;
+  text-align: right;
 }
 
 .qj-workflow {
@@ -809,6 +912,18 @@ body:has(.qj-landing) .VPHome > .vp-doc.container {
     grid-template-columns: 1fr;
   }
 
+  .qj-interface-preview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .qj-interface-preview-card {
+    min-height: auto;
+  }
+
+  .qj-interface-preview-mobile img {
+    max-height: 560px;
+  }
+
   .qj-capability-card {
     min-height: 230px;
   }
@@ -882,13 +997,27 @@ body:has(.qj-landing) .VPHome > .vp-doc.container {
   }
 
   .qj-capability-grid,
+  .qj-interface-preview-grid,
   .qj-workflow-panels {
     margin-top: 42px;
   }
 
   .qj-capability-card,
+  .qj-interface-preview-card > div,
   .qj-workflow-panel {
     padding: 26px;
+  }
+
+  .qj-interface-preview-desktop img {
+    width: calc(100% - 32px);
+    margin-right: 16px;
+    margin-bottom: 16px;
+    margin-left: 16px;
+  }
+
+  .qj-interface-preview-mobile img {
+    width: min(84%, 300px);
+    max-height: 520px;
   }
 
   .qj-workflow-panels {
@@ -924,6 +1053,7 @@ body:has(.qj-landing) .VPHome > .vp-doc.container {
   .qj-glass-entry,
   .qj-download-panel,
   .qj-capability-card,
+  .qj-interface-preview-card,
   .qj-footer-links a {
     transition: none;
   }
@@ -931,7 +1061,99 @@ body:has(.qj-landing) .VPHome > .vp-doc.container {
   .VPNavBarMenuLink:hover,
   .qj-glass-entry:hover,
   .qj-download-panel:hover,
-  .qj-capability-card:hover {
+  .qj-capability-card:hover,
+  .qj-interface-preview-card:hover {
     transform: none;
+  }
+}
+
+/* Product screenshots: wider than prose while keeping the VitePress guide sidebar. */
+body:has(.qj-interface-showcase) .VPDoc .content,
+body:has(.qj-interface-showcase) .VPDoc .content-container {
+  max-width: 1080px;
+}
+
+.qj-interface-showcase {
+  margin-top: 28px;
+}
+
+.qj-interface-showcase > h2 {
+  margin-top: 58px;
+}
+
+.qj-showcase-grid {
+  display: grid;
+  margin: 28px 0 48px;
+  gap: 20px;
+}
+
+.qj-showcase-grid-desktop {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.qj-showcase-grid-mobile {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.qj-showcase-card {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 18px;
+  background: var(--vp-c-bg-soft);
+  box-shadow: 0 16px 44px rgba(33, 61, 83, 0.08);
+}
+
+.dark .qj-showcase-card {
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.18);
+}
+
+.qj-showcase-card-wide {
+  grid-column: 1 / -1;
+}
+
+.qj-showcase-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-alt);
+}
+
+.qj-showcase-card figcaption {
+  display: grid;
+  padding: 18px 20px 20px;
+  gap: 6px;
+}
+
+.qj-showcase-card figcaption strong {
+  color: var(--vp-c-text-1);
+  font-size: 16px;
+}
+
+.qj-showcase-card figcaption span {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+@media (max-width: 960px) {
+  .qj-showcase-grid-desktop {
+    grid-template-columns: 1fr;
+  }
+
+  .qj-showcase-card-wide {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .qj-showcase-grid-mobile {
+    grid-template-columns: 1fr;
+  }
+
+  .qj-showcase-grid-mobile .qj-showcase-card img {
+    max-height: none;
   }
 }
