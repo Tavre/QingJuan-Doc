@@ -11,8 +11,8 @@
             class="qj-release-note"
             href="/reference/changelog"
           >
-            <span>v1.7.1 发布构建中</span>
-            修复移动端布局，优化夸克导入与阅读流畅度
+            <span>v1.7.3 已发布</span>
+            完整简介、文本交互与番茄正文重试
           </a>
 
           <p class="qj-hero-kicker">QingJuan · 开源小说与漫画阅读工具</p>
@@ -59,7 +59,7 @@
       <div class="qj-section-heading">
         <p>一套能力，两种使用方式</p>
         <h2 id="qj-capabilities-title">从发现内容，到安静读完</h2>
-        <span>当前稳定版为 v1.7.0；v1.7.1+22 正在构建发布。</span>
+        <span>当前稳定版为 v1.7.3；Windows 与 Android 安装包已发布。</span>
       </div>
 
       <div class="qj-capability-grid">
@@ -78,7 +78,7 @@
         <a class="qj-capability-card" href="/guide/reading-and-tts">
           <span class="qj-card-index">03</span>
           <h3>为平台分别设计</h3>
-          <p>Windows 保持 Fluent 桌面体验；Android 优化安全区、长章节阅读与高刷新率适配。</p>
+          <p>Windows 保持 Fluent 桌面体验；Android 优化液态玻璃导航、完整简介与文本输入。</p>
           <span class="qj-card-link">了解阅读体验 →</span>
         </a>
       </div>
