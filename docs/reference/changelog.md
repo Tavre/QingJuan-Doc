@@ -2,13 +2,62 @@
 
 这里记录青卷各版本面向用户的主要变化。GitHub 公开 Release 记录从 v1.1.0 开始；日期按中国标准时间列出，只有已创建 Git 标签和 GitHub Release 的版本才标记为“已发布”。
 
-## v1.7.1（发布构建中）
+## v1.7.3
 
-源码版本为 `1.7.1+22`，发布准备于 2026-08-19 合并到主分支。[查看 PR #36](https://github.com/qingscroll/QingJuan/pull/36)
+发布于 2026-08-20，版本号为 `1.7.3+24`。[查看 Release](https://github.com/qingscroll/QingJuan/releases/tag/v1.7.3) · [查看 PR #38](https://github.com/qingscroll/QingJuan/pull/38)
 
-::: warning 发布流程进行中
-当前可下载的稳定版仍是 v1.7.0。v1.7.1 的代码已经进入主分支，正式标签、Release 和安装包完成前，请继续从 latest 页面下载 v1.7.0。
-:::
+### 手机端书籍简介
+
+- 书籍详情页不再省略超长简介，全部内容保留在固定高度的独立纵向滑动区中；
+- Windows 详情页继续完整展示简介；搜索结果仍使用有界摘要，避免单个结果占用过多空间。
+
+### 手机端文本输入
+
+- Android 文本输入框关闭长按拖动选区时的放大镜，同时保留系统选区、复制、粘贴和上下文菜单；
+- 连接 Token 等密码输入框使用相同交互规则，不会禁用用户主动的标准文本编辑操作。
+
+### 番茄正文获取
+
+- 番茄阅读页返回 HTTP 200 但正文为空、显示验证页或缺少 `__INITIAL_STATE__` 时，会按既有有界策略重试，不再将无正文响应当作成功；
+- 网页 SSR 正文仍不可用时，保留原有番茄 APP 全文回退链，不扩大 Cookie、登录或受保护内容的使用边界。
+
+### 发布与升级
+
+- 正式 Release 已提供 `QingJuan-v1.7.3-windows-x64.zip`、`QingJuan-v1.7.3-android.apk` 与两份 SHA-256 校验文件；
+- 标签发布工作流成功，Release 不是草稿或预发布；
+- 可直接读取 v1.7.2 的 Windows 本机或 Linux 后端数据，不涉及数据库或导入格式迁移。
+
+## v1.7.2
+
+发布于 2026-08-20，版本号为 `1.7.2+23`。[查看 Release](https://github.com/qingscroll/QingJuan/releases/tag/v1.7.2) · [查看 PR #37](https://github.com/qingscroll/QingJuan/pull/37)
+
+### Linux 章节缓存与阅读优先级
+
+- Linux 后端完成按需导入后，会从最早未缓存章节开始顺序缓存全部可访问正文；客户端断开不会取消，服务重启后会根据目录和已落盘文件继续；
+- 用户打开章节时，当前章和下一章优先于后台顺序缓存；同章并发请求会合并，不相关的低优先级下载会暂停并重新排队；
+- 单章失败只记录该章并继续后续缓存；Windows 本机后端仍保持当前章与相邻章的轻量策略。
+
+### 模型端点与管理安全
+
+- 翻译模型和外部 OCR 设置只允许带 CSRF 的管理会话修改，普通客户端 Token 不能修改设置或触发真实外部探针；
+- API 密钥与规范化 Origin 绑定，切换协议、主机或端口后需要重新录入；
+- 出站请求默认只允许公网 HTTPS，并拒绝回环、私网、链路本地、保留地址、云元数据、环境代理和自动重定向；
+- Linux 局域网自建模型可由运维方通过 `QINGJUAN_MODEL_ENDPOINT_ALLOWLIST` 精确授权，安装脚本会保留已有白名单。
+
+### Android 界面
+
+- 底部导航改为范围受控的悬浮圆角液态玻璃表面，统一亮暗主题的描边、阴影、选中态和触控反馈；
+- 透明效果关闭或背景不适合采样时自动提高表面不透明度，并限制模糊区域以控制滚动渲染成本。
+
+### 发布与升级
+
+- 固定 Flutter 3.24.3 下通过 Dart 格式、Analyzer、132 项 Flutter 测试与 Android Release APK 构建；Python Ruff、Compileall、232 项 Pytest，以及管理端类型检查、25 项测试和生产构建通过；
+- 正式 Release 已提供 Windows x64 ZIP、Android APK 与两份 SHA-256 校验文件；
+- 可直接读取 v1.7.1 数据，不涉及数据库或导入格式迁移；Linux 既有按需导入作品会在服务启动后继续缓存未落盘章节。
+
+## v1.7.1
+
+发布于 2026-08-19，版本号为 `1.7.1+22`。[查看 Release](https://github.com/qingscroll/QingJuan/releases/tag/v1.7.1) · [查看 PR #36](https://github.com/qingscroll/QingJuan/pull/36)
 
 ### Android 界面修复
 

@@ -46,6 +46,24 @@ HTTP 只适用于可信私有网络。公网访问必须由反向代理终止 TL
 
 普通日志应只包含任务 ID、阶段、状态码、耗时和脱敏错误。向他人求助前再次检查终端输出和截图。
 
+## 模型与 OCR 出站地址
+
+v1.7.2 起，模型与外部 OCR 请求默认只允许解析到公网地址的 HTTPS。后端会拒绝回环、私网、链路本地、保留地址、云元数据、环境代理和自动重定向，并把连接固定到已经校验的 IP。
+
+确需连接局域网自建模型时，只能由 Linux 运维方在 `/etc/qingjuan/backend.env` 中设置精确 Origin：
+
+```text
+QINGJUAN_MODEL_ENDPOINT_ALLOWLIST=http://192.168.1.20:11434
+```
+
+多个 Origin 使用英文逗号分隔。保存后运行：
+
+```bash
+sudo systemctl restart qingjuan-backend
+```
+
+重新运行安装脚本会保留已有白名单。业务 API 和管理界面不会显示或修改该值。
+
 ## 轮换连接 Token
 
 在源码目录重新运行安装脚本：
@@ -64,5 +82,6 @@ sudo qingjuan-info
 - [ ] 服务由单个 systemd 实例、单个 Uvicorn worker 运行；
 - [ ] `/var/lib/qingjuan` 和 `/etc/qingjuan` 权限受限；
 - [ ] 客户端、管理界面和翻译服务使用不同凭据；
+- [ ] 局域网模型只通过精确 Origin 白名单授权；
 - [ ] 日志和 Issue 不含密钥、Cookie、正文和服务器绝对路径；
 - [ ] 已建立可验证的离线备份。

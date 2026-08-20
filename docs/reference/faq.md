@@ -48,6 +48,10 @@ sudo qingjuan-password --generate
 
 不需要。默认由当前后端的 RapidOCR 识字，再把纯文本交给模型翻译。只有明确开启“使用模型辅助识图”时，图片才可能发送给支持视觉输入的模型。
 
+## Linux 如何连接局域网自建模型？
+
+v1.7.2 起，模型端点默认只允许公网 HTTPS。局域网模型需要由运维方在 `/etc/qingjuan/backend.env` 的 `QINGJUAN_MODEL_ENDPOINT_ALLOWLIST` 中填写精确 Origin，然后重启 `qingjuan-backend`。不要通过普通客户端或管理界面绕过该限制。
+
 ## 支持哪些本地文件？
 
 小说支持 TXT/TEXT、DOCX、EPUB；漫画支持 PDF。旧 `.doc` 需要先转换成 DOCX。
