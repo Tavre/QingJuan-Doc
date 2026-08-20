@@ -1,14 +1,17 @@
 # 内置解析器
 
-青卷 v1.7.0 起随后端提供 22 个内置站点解析器。每个解析器都有独立的稳定 ID、匹配域名、作品类型、能力和启停状态；它们与用户导入的 Legado / 阅读 App JSON 书源相互独立。v1.7.1 至 v1.7.3 没有新增解析器，主要增强夸克导入、Linux 章节缓存与番茄正文重试。
+青卷 v1.7.7 随后端提供 26 个内置站点解析器。每个解析器都有独立的稳定 ID、匹配域名、作品类型、能力和启停状态；它们与用户导入的 Legado / 阅读 App JSON 书源相互独立。v1.7.7 新增刺猬猫阅读、SF 轻小说、少年梦阅读和 E-Hentai，并统一目录访问标记与章节正文的处理规则。
 
 ## 解析器清单
 
 | 类型 | 解析器 | 插件 ID | 匹配域名 | 额外能力 |
 | --- | --- | --- | --- | --- |
 | 小说 | [番茄小说](./fanqie.md) | `fanqie` | `fanqienovel.com` | 搜索、按需下载、扫码 / Cookie 登录、账号书架 |
-| 小说 | [起点中文网](./qidian.md) | `qidian` | `qidian.com` | 搜索、按需下载、扫码登录、账号书架 |
-| 小说 | [夸克小说](./quark.md) | `quark` | `shuqi.com`、`novel.quark.cn` | 匿名搜索、按需读取免费完整章节 |
+| 小说 | [起点中文网](./qidian.md) | `qidian` | `qidian.com` | 搜索、完整目录、按需下载、扫码登录、账号书架 |
+| 小说 | [夸克小说](./quark.md) | `quark` | `shuqi.com`、`novel.quark.cn` | 搜索、完整目录、按需读取可取得正文 |
+| 轻小说 | [刺猬猫阅读](./ciweimao.md) | `ciweimao` | `ciweimao.com` | 搜索、分卷目录、加密正文解析 |
+| 轻小说 | [SF 轻小说](./sfacg.md) | `sfacg` | `sfacg.com` | 搜索、完整分卷目录、章节正文 |
+| 小说 | [少年梦阅读](./shaoniandream.md) | `shaoniandream` | `shaoniandream.com` | 搜索、分卷目录、加密正文解析 |
 | 小说 | [Kakuyomu](./kakuyomu.md) | `kakuyomu` | `kakuyomu.jp` | 搜索 |
 | 小说 | [Syosetu](./syosetu.md) | `syosetu` | `syosetu.com` | 公开作品目录与章节 |
 | 小说 | [Novel18](./novel18.md) | `novel18` | `novel18.syosetu.com` | 年龄限制站点的公开内容 |
@@ -19,6 +22,7 @@
 | 小说 / 插画 | [Pixiv](./pixiv.md) | `pixiv` | `pixiv.net` | 小说、系列与多页插画 |
 | 漫画 | [18Comic](./18comic.md) | `18comic` | `18comic.vip` | 搜索 |
 | 漫画 | [Bika Web App](./bika.md) | `bika` | `bikawebapp.com` | 搜索；需要站点凭据 |
+| 漫画 | [E-Hentai](./ehentai.md) | `ehentai` | `e-hentai.org`、`exhentai.org` | 搜索、画廊元数据与可取得原图 |
 | 漫画 | [Pixiv Comic](./pixiv-comic.md) | `pixiv-comic` | `comic.pixiv.net` | 公开章节与图片 |
 | 漫画 | [Yanmaga](./yanmaga.md) | `yanmaga` | `yanmaga.jp` | 匿名公开章节 |
 | 漫画 | [Webtoons](./webtoons.md) | `webtoons` | `webtoons.com` | 通用漫画页适配 |
@@ -36,6 +40,12 @@
 - **搜索**：解析器后端可以查询作品。v1.7.0 主搜索页直接提供“书源、夸克、番茄、起点”四项；其他标注搜索的解析器暂不单列为主搜索引擎；
 - **按需下载**：先保存目录，阅读时缓存当前章节并预取后续章节；
 - **账号登录 / 书架导入**：当前仅番茄与起点支持，详见[账号书架流程](../sources-and-search.md#番茄与起点账号书架)。
+
+## 访问标记与可解析内容
+
+v1.7.7 起，VIP、订阅、付费、登录或其他访问状态会保留在目录和章节元数据中，但不会仅因为标记本身就提前删除章节。解析器会请求对应的正常上游正文或 Viewer：如果响应实际提供了可验证的完整正文或漫画页面，青卷会保存；如果上游只返回试读、空内容、登录提示，或使用当前尚未支持的格式，则记录明确错误并继续处理其他章节。
+
+这项规则不会伪造账号、会员、购买状态或上游响应，也不会保证每个带标记章节都能取得内容。实际结果仍取决于站点当前响应、网络、地区和账号状态。
 
 ## 管理入口
 

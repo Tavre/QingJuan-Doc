@@ -11,8 +11,8 @@
             class="qj-release-note"
             href="/reference/changelog"
           >
-            <span>v1.7.3 已发布</span>
-            完整简介、文本交互与番茄正文重试
+            <span>v1.7.7 正式版</span>
+            四个新解析器与完整目录章节处理
           </a>
 
           <p class="qj-hero-kicker">QingJuan · 开源小说与漫画阅读工具</p>
@@ -59,7 +59,7 @@
       <div class="qj-section-heading">
         <p>一套能力，两种使用方式</p>
         <h2 id="qj-capabilities-title">从发现内容，到安静读完</h2>
-        <span>当前稳定版为 v1.7.3；Windows 与 Android 安装包已发布。</span>
+        <span>当前正式版为 v1.7.7；Windows 与 Android 安装包正在构建。</span>
       </div>
 
       <div class="qj-capability-grid">
@@ -72,16 +72,54 @@
         <a class="qj-capability-card" href="/guide/parsers/">
           <span class="qj-card-index">02</span>
           <h3>插件化内容解析</h3>
-          <p>22 个内置解析器独立启停；搜索页可在书源、夸克、番茄与起点之间切换。</p>
+          <p>26 个内置解析器独立启停；v1.7.7 新增刺猬猫、SF 轻小说、少年梦与 E-Hentai。</p>
           <span class="qj-card-link">查看全部解析器 →</span>
         </a>
         <a class="qj-capability-card" href="/guide/reading-and-tts">
           <span class="qj-card-index">03</span>
           <h3>为平台分别设计</h3>
-          <p>Windows 保持 Fluent 桌面体验；Android 优化液态玻璃导航、完整简介与文本输入。</p>
+          <p>Windows 保持 Fluent 桌面体验；Android 优化触控布局。两端阅读器共享稳定的段落排版。</p>
           <span class="qj-card-link">了解阅读体验 →</span>
         </a>
       </div>
+    </section>
+
+    <section class="qj-home-section qj-interface-preview" aria-labelledby="qj-interface-title">
+      <div class="qj-section-heading">
+        <p>桌面端与移动端</p>
+        <h2 id="qj-interface-title">同一套书库，适合每块屏幕</h2>
+        <span>Windows 为键鼠与宽屏设计，Android 为触控与随身阅读设计；业务能力一致，界面各自适配。</span>
+      </div>
+
+      <div class="qj-interface-preview-grid">
+        <a class="qj-interface-preview-card qj-interface-preview-desktop" href="/guide/interface-showcase#windows-桌面端">
+          <div>
+            <span>Windows</span>
+            <strong>宽屏工作区</strong>
+            <p>侧栏导航、书架卡片和完整阅读控制，适合键鼠操作与集中管理。</p>
+          </div>
+          <img
+            src="/screenshots/v1.7.6/windows-bookshelf.png"
+            alt="青卷 Windows 桌面端深色书架界面"
+            loading="lazy"
+          />
+        </a>
+
+        <a class="qj-interface-preview-card qj-interface-preview-mobile" href="/guide/interface-showcase#android-移动端">
+          <div>
+            <span>Android</span>
+            <strong>随身书架</strong>
+            <p>底部导航、触控操作与沉浸阅读，连接 Linux 后端即可访问共享书库。</p>
+          </div>
+          <img
+            src="/screenshots/v1.7.6/android-bookshelf.png"
+            alt="青卷 Android 移动端浅色书架界面"
+            loading="lazy"
+          />
+        </a>
+      </div>
+
+      <a class="qj-interface-preview-link" href="/guide/interface-showcase">查看全部桌面端与移动端界面 →</a>
     </section>
 
     <section class="qj-home-section qj-workflow" aria-labelledby="qj-workflow-title">
@@ -132,6 +170,7 @@
         <div>
           <strong>产品</strong>
           <a href="/guide/what-is-qingjuan">认识青卷</a>
+          <a href="/guide/interface-showcase">界面展示</a>
           <a href="/guide/install-client">安装客户端</a>
           <a href="/guide/reading-and-tts">阅读与听书</a>
         </div>

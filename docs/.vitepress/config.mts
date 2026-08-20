@@ -34,6 +34,7 @@ export default defineConfig({
           text: '认识青卷',
           items: [
             { text: '青卷是什么', link: '/guide/what-is-qingjuan' },
+            { text: '界面展示', link: '/guide/interface-showcase' },
             { text: '五分钟开始', link: '/guide/quick-start' },
             { text: '安装客户端', link: '/guide/install-client' },
             { text: '选择与连接后端', link: '/guide/connect-server' }
@@ -57,6 +58,9 @@ export default defineConfig({
             { text: '番茄小说', link: '/guide/parsers/fanqie' },
             { text: '起点中文网', link: '/guide/parsers/qidian' },
             { text: '夸克小说', link: '/guide/parsers/quark' },
+            { text: '刺猬猫阅读', link: '/guide/parsers/ciweimao' },
+            { text: 'SF 轻小说', link: '/guide/parsers/sfacg' },
+            { text: '少年梦阅读', link: '/guide/parsers/shaoniandream' },
             { text: 'Kakuyomu', link: '/guide/parsers/kakuyomu' },
             { text: 'Syosetu', link: '/guide/parsers/syosetu' },
             { text: 'Novel18', link: '/guide/parsers/novel18' },
@@ -67,6 +71,7 @@ export default defineConfig({
             { text: 'Pixiv', link: '/guide/parsers/pixiv' },
             { text: '18Comic', link: '/guide/parsers/18comic' },
             { text: 'Bika Web App', link: '/guide/parsers/bika' },
+            { text: 'E-Hentai', link: '/guide/parsers/ehentai' },
             { text: 'Pixiv Comic', link: '/guide/parsers/pixiv-comic' },
             { text: 'Yanmaga', link: '/guide/parsers/yanmaga' },
             { text: 'Webtoons', link: '/guide/parsers/webtoons' },

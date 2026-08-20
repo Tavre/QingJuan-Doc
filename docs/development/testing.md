@@ -19,7 +19,7 @@ Windows 发布构建：
 .\tool\build_windows.ps1
 ```
 
-Widget 测试需要分别覆盖 Android 五入口底部导航与 Windows `NavigationPane`，证明窗口宽度变化不会让两种平台界面互相切换；同时覆盖详情页状态栏安全区和完整简介滚动、手机文本输入关闭放大镜但保留选区、窄屏搜索导入、共享移动端底部面板的键盘与关闭行为，以及加载/空/错误状态、长中文标题、文字缩放、深色主题和减少动态效果。
+Widget 测试需要分别覆盖 Android 五入口底部导航与 Windows `NavigationPane`，证明窗口宽度变化不会让两种平台界面互相切换；同时覆盖详情页状态栏安全区和完整简介滚动、手机文本输入关闭放大镜但保留选区、Token 显式粘贴、小说段落随 `TextScaler` 变化的两字布局占位、短段与长段的页面全局横坐标、阅读器顶部状态栏与窗口背景、分页及连续模式音量键操作、窄屏搜索导入、共享移动端底部面板的键盘与关闭行为，以及加载/空/错误状态、长中文标题、文字缩放、深色主题和减少动态效果。
 
 ## Python
 
@@ -73,6 +73,12 @@ npm run build
 v1.7.x 的发布级验证还应在可访问的真实网络中检查夸克、番茄、起点、拷贝漫画和 COMICORES 的公开流程，并分别检查番茄与起点扫码登录和账号书架导入。若目标站点 TLS、地区或网络条件不可用，只能报告该项未验证，不能以 Mock 测试替代真实站点结论。
 
 `1.7.2+23` 在固定 Flutter 3.24.3 下通过 Dart 格式、Analyzer、132 项 Flutter 测试与 Android Release 构建，并通过 Python Ruff、Compileall、232 项 Pytest、管理端类型检查、25 项测试和生产构建。`1.7.3+24` 的主分支 CI 与标签发布工作流均已成功，正式 Release 的 Windows ZIP、Android APK 和两份 SHA-256 资产已验证。
+
+`1.7.4+25` 的 PR 验证通过版本一致性、Dart 格式、Analyzer、141 项 Flutter 测试、233 项 Pytest、25 项管理端测试、管理端生产构建和 Android Debug 构建；PR、合并后的主分支 CI 与标签发布工作流均成功，正式 Release 的 Windows ZIP、Android APK 和两份 SHA-256 资产已验证。
+
+`1.7.5+26` 的 PR 验证通过 142 项 Flutter 测试，并以实际字形坐标覆盖固定两字布局占位；Android 与 Windows 版本检查、两端正式产物构建和标签发布工作流均成功。
+
+`1.7.6+27` 的 PR 验证通过 20 项阅读器定向测试和 143 项完整 Flutter 测试；版本检查、全部 PR CI、Android 与 Windows 构建和标签发布工作流均成功，正式 Release 的四个资产已上传。
 
 ## 完成定义
 
