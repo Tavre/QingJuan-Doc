@@ -11,15 +11,15 @@
             class="qj-release-note"
             href="/reference/changelog"
           >
-            <span>v1.7.7 正式版</span>
-            四个新解析器与完整目录章节处理
+            <span>v2.0.0 正式版</span>
+            Linux 多用户、账号安全与在线升级
           </a>
 
           <p class="qj-hero-kicker">QingJuan · 开源小说与漫画阅读工具</p>
           <h1 id="qj-hero-title">让每一页，<br />都抵达你。</h1>
           <p class="qj-hero-lead">
             下载、翻译、阅读与听书，一套完整工作流。Windows 下载即用，无需 Linux；Android
-            与多设备场景可连接同一套远程书库。
+            与多设备场景可登录同一账号访问远程书库。
           </p>
 
           <div class="qj-hero-entries" aria-label="开始使用青卷">
@@ -59,14 +59,14 @@
       <div class="qj-section-heading">
         <p>一套能力，两种使用方式</p>
         <h2 id="qj-capabilities-title">从发现内容，到安静读完</h2>
-        <span>当前正式版为 v1.7.7；Windows 与 Android 安装包正在构建。</span>
+        <span>当前正式版为 v2.0.0；Windows 本机模式保持免登录，Linux 远程模式升级为多用户服务。</span>
       </div>
 
       <div class="qj-capability-grid">
         <a class="qj-capability-card" href="/guide/connect-server">
           <span class="qj-card-index">01</span>
           <h3>本机或远程，明确选择</h3>
-          <p>Windows 可使用随包本机后端，也可连接 Linux；Android 保持远程客户端边界。</p>
+          <p>Windows 可免登录使用随包本机后端；Linux 远程模式按账号隔离书架、进度与任务。</p>
           <span class="qj-card-link">了解后端模式 →</span>
         </a>
         <a class="qj-capability-card" href="/guide/parsers/">
@@ -75,11 +75,11 @@
           <p>26 个内置解析器独立启停；v1.7.7 新增刺猬猫、SF 轻小说、少年梦与 E-Hentai。</p>
           <span class="qj-card-link">查看全部解析器 →</span>
         </a>
-        <a class="qj-capability-card" href="/guide/reading-and-tts">
+        <a class="qj-capability-card" href="/guide/account-and-security">
           <span class="qj-card-index">03</span>
-          <h3>为平台分别设计</h3>
-          <p>Windows 保持 Fluent 桌面体验；Android 优化触控布局。两端阅读器共享稳定的段落排版。</p>
-          <span class="qj-card-link">了解阅读体验 →</span>
+          <h3>账号与安全</h3>
+          <p>Linux 支持邮箱或身份牌注册、GitHub 登录、验证器 2FA 与一次性恢复码。</p>
+          <span class="qj-card-link">管理账号安全 →</span>
         </a>
       </div>
     </section>
@@ -136,7 +136,7 @@
           <p>完整解压 ZIP，选择“本机后端”。服务固定监听回环地址，不需要 Linux 服务器。</p>
           <ul>
             <li>数据位于 <code>backend/data/</code></li>
-            <li>本机管理界面与模型设置</li>
+            <li>在客户端设置模型与外部 OCR</li>
             <li>Windows 系统 TTS 与键鼠体验</li>
           </ul>
           <a href="/guide/quick-start#windows-单机使用-无需-linux">开始安装 →</a>
@@ -145,11 +145,11 @@
         <article class="qj-workflow-panel qj-workflow-panel-remote">
           <span>Windows + Android</span>
           <h3>连接同一书库</h3>
-          <p>在 Linux 部署单用户 FastAPI 服务，通过私网或 HTTPS 连接多个客户端。</p>
+          <p>在 Linux 部署多用户 FastAPI 服务，通过私网或 HTTPS 连接 Windows 与 Android。</p>
           <ul>
-            <li>统一作品、任务与阅读进度</li>
-            <li>Bearer Token 与管理密码分离</li>
-            <li>systemd 原生部署与备份流程</li>
+            <li>每位用户拥有独立书架与进度</li>
+            <li>连接 Token、用户会话与管理密码分离</li>
+            <li>systemd 原生部署与受控在线升级</li>
           </ul>
           <a href="/server/deploy">部署服务端 →</a>
         </article>

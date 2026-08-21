@@ -4,13 +4,13 @@
 
 青卷是一套面向小说与漫画的开源工具。Windows ZIP 自带本机 FastAPI 后端，可以在一台电脑上独立使用；Windows 也可以切换到 Linux 远程后端。Android 是远程客户端，需要连接 Linux 后端。
 
-因此，**只在 Windows 上使用青卷时无需部署或连接 Linux 服务器**。只有使用 Android，或希望 Windows 与 Android 共用书库时，才需要部署 Linux 服务。
+因此，**只在 Windows 上使用青卷时无需部署或连接 Linux 服务器**。只有使用 Android，或希望 Windows 与 Android 登录同一账号访问远程书库时，才需要部署 Linux 服务。
 
 ## 工作方式
 
 | 层级 | 负责什么 | 不负责什么 |
 | --- | --- | --- |
-| Windows 客户端与本机后端 | 书架、搜索、阅读、SQLite、下载、OCR、翻译、任务、管理界面 | 本机数据不会自动同步到 Linux |
+| Windows 客户端与本机后端 | 书架、搜索、阅读、SQLite、下载、OCR、翻译、任务；在客户端维护模型设置 | 本机数据不会自动同步到 Linux，也不启用远程账号功能 |
 | Android 客户端 | 书架、搜索、阅读、文件选择、设备 TTS、主题与阅读偏好 | 不包含或启动 Python 后端 |
 | Linux FastAPI 服务 | 为 Windows 远程模式和 Android 保存书库、执行任务并提供管理界面 | Windows 单机使用时不是必需项 |
 | 外部服务 | 作品来源、OpenAI 兼容翻译接口 | 不应收到连接 Token、管理密码或无关数据 |
@@ -22,7 +22,7 @@ Windows 本机模式的工作方式：
 3. 本机后端固定监听 `http://127.0.0.1:19453`，不需要连接 Token。
 4. 书库、任务和设置保存在解压目录的 `backend/data/`。
 
-远程模式下，Windows 或 Android 使用地址与 Bearer Token 连接 Linux 服务。多个客户端连接同一服务时，可以共用书库、任务和阅读进度。
+远程模式下，Windows 或 Android 先使用地址与连接 Token 进入 Linux 服务，再注册或登录用户账号。同一账号可在多台设备访问自己的书架、任务和阅读进度；不同账号的数据相互隔离。
 
 ## 平台界面
 
@@ -36,14 +36,16 @@ Windows 与 Android 共享业务能力，但不共用同一套顶层布局：
 - v1.7.5 将两字缩进改为独立布局占位，不再让不可见字符参与字体整形和两端对齐；
 - v1.7.6 让短段与长段始终占用同一阅读栏，并在 Android 窗口重新获焦后恢复顶部沉浸状态，减少不同厂商字体与系统栏行为造成的偏差；
 - v1.7.7 新增刺猬猫、SF 轻小说、少年梦和 E-Hentai 解析器，并统一完整目录与访问状态章节的处理规则；
+- v1.7.8 将 Windows 本机模型与 OCR 设置移入客户端，并按真实排版测量分页；
+- v2.0.0 为 Linux 后端加入多用户、邮箱或身份牌注册、GitHub 登录、TOTP 两步验证、用户管理和在线升级，同时重构“我的”页面并优化音量键翻页与桌面滚动；
 - 调整窗口宽度只会改变当前平台内部的排版，不会把 Windows 界面切换成 Android 布局。
 
 可在[桌面端与移动端界面展示](./interface-showcase.md)中查看两端的书架、作品详情与阅读器截图。
 
-v1.7.7 包含 26 个可独立启停的内置解析器，并在搜索页保留书源、夸克、番茄、起点四种直接引擎。Windows 本机模式在客户端 **插件配置** 中管理；Linux 远程模式在服务器管理界面的 **插件管理** 中管理，Android 不显示本地插件入口。完整清单见[内置解析器](./parsers/)。
+v2.0.0 包含 26 个可独立启停的内置解析器，并在搜索页保留书源、夸克、番茄、起点四种直接引擎。Windows 本机模式在客户端 **插件配置** 中管理；Linux 远程模式在服务器管理界面的 **插件管理** 中管理，Android 不显示本地插件入口。完整清单见[内置解析器](./parsers/)。
 
 ::: info 版本状态
-当前正式版是 [v1.7.7](https://github.com/qingscroll/QingJuan/releases/tag/v1.7.7)，版本号为 `1.7.7+28`。Windows x64 ZIP、Android APK 与两份 SHA-256 校验文件按正式发布工作流构建。
+当前正式版是 [v2.0.0](https://github.com/qingscroll/QingJuan/releases/tag/v2.0.0)，版本号为 `2.0.0+32`。Windows x64 ZIP、Android APK 与两份 SHA-256 校验文件由正式发布工作流生成。
 :::
 
 ## 适合谁
@@ -58,9 +60,9 @@ v1.7.7 包含 26 个可独立启停的内置解析器，并在搜索页保留书
 | --- | --- |
 | Windows | Windows 10 / 11 x64；支持随包本机后端或 Linux 远程后端 |
 | Android | Android 8.0（API 26）或更高版本的手机和平板客户端 |
-| Linux | 可选的 x86_64、systemd、Python 3.11+ 单用户远程服务端 |
+| Linux | 可选的 x86_64、systemd、Python 3.11+ 多用户远程服务端 |
 
-目前不支持 iOS、macOS 客户端、Android 本地后端、面向读者的 Web/PWA 客户端、集群或多用户隔离。
+目前不支持 iOS、macOS 客户端、Android 本地后端、面向读者的 Web/PWA 客户端或集群部署。
 
 ## 从哪里开始
 

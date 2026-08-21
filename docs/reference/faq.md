@@ -2,7 +2,7 @@
 
 ## Windows 可以不部署 Linux 后端吗？
 
-可以。v1.7.x 的 Windows ZIP 包含本机 FastAPI 后端。在 **设置 → 后端连接** 中选择 **本机后端**，即可在当前电脑上使用，无需 Linux 服务器、连接 Token 或另外安装 Python。
+可以。v2.0.0 的 Windows ZIP 包含本机 FastAPI 后端。在 **设置 → 后端连接** 中选择 **本机后端**，即可在当前电脑上使用，无需 Linux 服务器、连接 Token、用户账号或另外安装 Python。
 
 本机模式固定使用 `http://127.0.0.1:19453`，数据位于完整解压目录的 `backend/data/`。Android 仍需连接 Linux 后端。
 
@@ -24,7 +24,23 @@
 
 ## 连接 Token 和管理密码有什么区别？
 
-连接 Token 给 Windows 远程模式和 Android 使用；管理密码用于 Linux 浏览器 `/admin/`。Windows 本机模式不需要这两项远程凭据。
+连接 Token 允许 Windows 远程模式和 Android 进入指定 Linux 服务；连接后还需注册或登录用户账号。管理密码只用于 Linux 浏览器 `/admin/`。Windows 本机模式不需要这些远程凭据。
+
+## 为什么连接 Linux 后还要登录？
+
+v2.0.0 将 Linux 后端升级为多用户服务。连接 Token 保护服务器入口，用户会话则决定当前书架、阅读进度和任务属于谁。同一账号可在多台设备使用，不同账号的数据相互隔离。
+
+## Windows 本机模式为什么打不开 `/admin/`？
+
+这是 v1.7.8 起的预期行为。本机后端关闭浏览器管理站点；翻译模型、API 密钥、系统提示词和外部 OCR 请在客户端 **设置 → 翻译服务** 中维护。Linux 远程后端仍提供 `/admin/`。
+
+## GitHub 可以直接注册青卷账号吗？
+
+不能。GitHub 只登录已经注册并主动绑定的青卷账号，不会自动注册，也不申请邮箱或仓库权限。先用本地账号登录，再在 **我的 → 账号安全** 中完成绑定。
+
+## 2FA 恢复码丢了怎么办？
+
+尚能使用验证器登录时，在 **账号安全** 中重新生成恢复码，旧码会立即失效。验证器和恢复码都不可用时，请联系服务器管理员重置账号安全状态。服务器迁移必须配套恢复 `/var/lib/qingjuan` 与 `/etc/qingjuan/backend.env`，否则原有 TOTP 密钥无法解密。
 
 ## 忘记管理密码怎么办？
 
@@ -62,11 +78,11 @@ v1.7.2 起，模型端点默认只允许公网 HTTPS。局域网模型需要由�
 
 ## 数据在哪里？
 
-Windows 本机模式的数据在完整解压目录的 `backend/data/`；Linux 远程数据在 `/var/lib/qingjuan`。两套数据不会自动同步。远程连接 Token 保存在客户端的平台安全存储中。
+Windows 本机模式的数据在完整解压目录的 `backend/data/`；Linux 远程数据在 `/var/lib/qingjuan`。两套数据不会自动同步。远程连接 Token 和用户会话分别保存在客户端的平台安全存储中。
 
 ## 卸载会删除书库吗？
 
-普通 `sudo qingjuan-uninstall` 会保留书库。只有显式使用 `--purge-data` 才永久删除数据和系统用户。
+普通 `sudo qingjuan-uninstall` 会保留书库与配套密钥配置。只有显式使用 `--purge-data` 才永久删除用户、书库、2FA 配置和系统用户。
 
 ## 为什么某个站点突然不能用了？
 
@@ -74,4 +90,4 @@ Windows 本机模式的数据在完整解压目录的 `backend/data/`；Linux �
 
 ## 有 iOS 或网页阅读器吗？
 
-当前没有。React 管理界面用于管理 Windows 本机或 Linux 远程后端，不是读者 Web 客户端或 PWA。
+当前没有。React 管理界面只用于管理 Linux 远程后端，不是读者 Web 客户端或 PWA；Windows 本机设置在客户端内完成。
