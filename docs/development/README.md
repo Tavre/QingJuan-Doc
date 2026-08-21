@@ -4,7 +4,7 @@
 
 ## 当前发布基线
 
-- 当前已发布版本：`1.7.6+27`，对外版本为 `v1.7.6`。V1.7.5 移除参与字体整形的不可见缩进字符；V1.7.6 进一步统一短段与长段的阅读栏坐标，并修复部分 OEM 重置系统栏后顶部露出黑色窗口背景的问题。
+- 当前已发布版本：`2.0.0+32`，对外版本为 `v2.0.0`。V2.0.0 将 Linux 后端升级为多用户服务，并加入组合注册验证、GitHub 登录、TOTP 2FA、用户管理和受控在线升级；Windows 本机模式继续免登录使用。
 - Windows 客户端支持“本机后端”和“Linux 远程后端”两种显式连接模式；Android 仍只连接既有 Linux FastAPI 服务。
 - Windows 发布包必须包含由 PyInstaller 构建的本机伴随后端。本机模式只监听回环地址，不使用连接 Token；远程模式
   必须配置地址与 Token，连接失败时不得自动回退本机。
@@ -18,7 +18,7 @@
 - 客户端：Flutter + Dart + `fluent_ui`。
 - 管理界面：React + TypeScript + Ant Design，用于管理当前 FastAPI 后端，不作为阅读客户端或 PWA。
 - UI 基线：Flutter 客户端使用 Fluent 视觉语言并适配 Windows 键鼠与 Android 触控；管理界面遵循 Ant Design。
-- 后端：Python + FastAPI；Windows 可使用随包回环进程，Linux 使用单用户远程服务。
+- 后端：Python + FastAPI；Windows 可使用随包回环进程并隐式使用本机管理员，Linux 使用多用户远程服务。
 - 连接：Windows 本机模式固定使用 `http://127.0.0.1:19453`；Windows 远程模式与 Android 必须由用户配置服务器，
   私有网络可使用 HTTP，其他网络必须使用 HTTPS，并启用 Bearer Token 认证。
 - 存储：当前选中的后端持有 SQLite、书籍文件、任务与服务凭据；客户端只保存非敏感偏好和平台安全存储

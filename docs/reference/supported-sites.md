@@ -4,7 +4,7 @@
 
 ## 内置站点
 
-| 类型 | v1.7.7 内置解析器 |
+| 类型 | v2.0.0 内置解析器 |
 | --- | --- |
 | 小说与插画 | [番茄小说](../guide/parsers/fanqie.md)、[起点中文网](../guide/parsers/qidian.md)、[夸克小说](../guide/parsers/quark.md)、[刺猬猫阅读](../guide/parsers/ciweimao.md)、[SF 轻小说](../guide/parsers/sfacg.md)、[少年梦阅读](../guide/parsers/shaoniandream.md)、[Kakuyomu](../guide/parsers/kakuyomu.md)、[Syosetu](../guide/parsers/syosetu.md)、[Novel18](../guide/parsers/novel18.md)、[Hameln](../guide/parsers/hameln.md)、[Novelup](../guide/parsers/novelup.md)、[Alphapolis](../guide/parsers/alphapolis.md)、[Linovelib / Bilinovel](../guide/parsers/linovelib.md)、[Pixiv](../guide/parsers/pixiv.md) |
 | 漫画 | [18Comic](../guide/parsers/18comic.md)、[Bika Web App](../guide/parsers/bika.md)、[E-Hentai](../guide/parsers/ehentai.md)、[Pixiv Comic](../guide/parsers/pixiv-comic.md)、[Yanmaga](../guide/parsers/yanmaga.md)、[Webtoons](../guide/parsers/webtoons.md)、[Mangabz](../guide/parsers/mangabz.md)、[漫画柜](../guide/parsers/manhuagui.md)、[拷贝漫画](../guide/parsers/copymanga.md)、[COMICORES 漫核](../guide/parsers/comicores.md)、[动漫之家](../guide/parsers/dmzj.md) |
@@ -13,7 +13,7 @@
 
 “支持”表示代码中存在相应解析或协议适配，不代表绕过登录、购买、地区或版权限制。无法合法访问的章节不会因为青卷而变得可访问。
 
-v1.7.7 包含 26 个可启停解析插件：Windows 本机模式在客户端 **插件配置** 中管理；Linux 远程模式在 `/admin/#plugins` 管理；Android 由服务器管理员统一维护。番茄与起点支持账号登录和书架导入；刺猬猫、SF 轻小说、少年梦和 E-Hentai 是本版新增项；COMICORES 只提供搜索和元数据，不提供章节。插件随版本发布，目前不支持在线安装、卸载或上传任意代码。
+v2.0.0 包含 26 个可启停解析插件：Windows 本机模式在客户端 **插件配置** 中管理；Linux 远程模式在 `/admin/#plugins` 管理；Android 由服务器管理员统一维护。番茄与起点支持账号登录和书架导入；刺猬猫、SF 轻小说、少年梦和 E-Hentai 自 v1.7.7 起提供；COMICORES 只提供搜索和元数据，不提供章节。插件随版本发布，目前不支持在线安装、卸载或上传任意代码。
 
 VIP、订阅、付费或登录等目录状态只作为元数据保留，不会单独触发章节过滤。上游实际返回可验证完整正文或漫画页面时保存；只返回试读、空内容、限制提示或当前不支持的格式时明确报错。青卷不会伪造账号、购买状态或上游响应。
 
@@ -46,7 +46,7 @@ VIP、订阅、付费或登录等目录状态只作为元数据保留，不会�
 - Android 8.0（API 26）或更高版本客户端；
 - 可选的 Linux x86_64、systemd、Python 3.11+ 远程服务端。
 
-Windows 可在不连接 Linux 的情况下使用本机后端；Android 必须连接 Linux。当前不支持 iOS、面向读者的 Web/PWA 客户端、Android 本地 Python 后端、Docker 官方部署、多用户或集群。
+Windows 可在不连接 Linux 的情况下使用本机后端；Android 必须连接 Linux。Linux v2.0.0 支持多用户隔离；当前不支持 iOS、面向读者的 Web/PWA 客户端、Android 本地 Python 后端、Docker 官方部署或集群。
 
 ## 站点异常
 

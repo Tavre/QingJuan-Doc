@@ -10,7 +10,7 @@ Flutter 页面与 Widget
 Controller / AppState
         ↓
 Repository / API Client
-        ↓  本机回环 HTTP，或 HTTPS / 私网 HTTP + Bearer Token
+        ↓  本机回环 HTTP，或 HTTPS / 私网 HTTP + 连接 Token + 用户会话
 FastAPI Router
         ↓
 领域服务 / 任务执行器 / 存储
@@ -29,7 +29,7 @@ SQLite、文件、第三方站点、OpenAI 兼容服务
 - 手机详情页使用独立滚动区域保留完整简介，搜索结果仍使用有界摘要；Android 文本输入只关闭放大镜，不关闭系统选区、复制、粘贴和上下文菜单；
 - 平台 Runner 只负责 Flutter 引擎、生命周期和必要系统集成；
 - Android 不复制 Dart 业务，不申请广泛存储权限；
-- 客户端只保存非敏感偏好和平台安全存储保护的远程 Token；
+- 客户端只保存非敏感偏好，以及平台安全存储保护的远程连接 Token 和用户会话 Token；
 - 只有 Windows 本机后端生命周期基础设施可以启动、探测和回收随包后端；Widget、Controller 与 Android 代码不得操作 Python 进程。
 
 应用退出时可回收当前客户端启动的 Windows 本机后端，但不得影响外部进程或 Linux 服务。
@@ -50,14 +50,16 @@ SQLite、文件、第三方站点、OpenAI 兼容服务
 - 长任务拥有稳定 ID、进度、状态和脱敏日志；
 - 外部请求必须设置超时、限制并发并处理站点变化；
 - 单个任务失败不得终止整个进程。
+- Linux 书架、阅读进度、任务、导出物与异步导入状态必须按当前用户隔离；客户端不能指定任意用户 ID；
+- Windows 本机模式使用隐式管理员主体，不挂载远程注册、GitHub 或 2FA 接口。
 
 ## 管理界面边界
 
-React 管理界面管理当前 FastAPI 后端的服务概览、书库、任务、书源、站点插件和模型设置。插件页除启停和只读元数据外，还按后端公开能力提供账号登录与书架导入。它以构建后的静态资源提交到 `python-backend/app/admin_static/`；Windows 本机后端和 Linux 远程后端共用同一套静态资源。
+React 管理界面只随 Linux 后端提供，管理服务概览、用户、注册策略、书库、任务、书源、站点插件、模型设置和后端升级。它以构建后的静态资源提交到 `python-backend/app/admin_static/`；Windows 本机后端不挂载 `/admin/`，模型与 OCR 改由 Flutter 客户端设置页维护。
 
 ## 安全边界
 
-- 远程客户端 API 使用 Bearer Token；Windows 本机无 Token 服务只监听固定回环地址；
+- 远程客户端 API 使用连接 Token 保护实例入口，并使用独立用户会话标识数据主体；Windows 本机无 Token 服务只监听固定回环地址；
 - 管理界面使用独立密码、签名会话和 CSRF；
 - 翻译 API 密钥保存在服务端且不回传明文；
 - 模型与外部 OCR 端点默认只允许公网 HTTPS；Linux 私网端点必须通过运维环境中的精确 Origin 白名单授权，业务 API 不得读取或修改该白名单；

@@ -44,6 +44,7 @@ export default defineConfig({
           text: '使用客户端',
           items: [
             { text: '书架与导入', link: '/guide/library-and-import' },
+            { text: '账号与安全', link: '/guide/account-and-security' },
             { text: '书源、插件与搜索', link: '/guide/sources-and-search' },
             { text: '阅读与听书', link: '/guide/reading-and-tts' },
             { text: '翻译', link: '/guide/translation' },
@@ -91,6 +92,7 @@ export default defineConfig({
             { text: '准备服务器', link: '/server/requirements' },
             { text: '安装服务端', link: '/server/deploy' },
             { text: '管理界面', link: '/server/admin-console' },
+            { text: '用户与注册', link: '/server/users-and-registration' },
             { text: '网络与安全', link: '/server/network-and-security' }
           ]
         },
