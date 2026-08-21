@@ -1,13 +1,14 @@
 # 备份与迁移
 
-青卷当前不承诺无停机备份。可靠做法是短暂停止后端，完整复制 `/var/lib/qingjuan`，再启动服务。
+青卷当前不承诺无停机备份。可靠做法是短暂停止后端，配套复制 `/var/lib/qingjuan` 与 `/etc/qingjuan/backend.env`，再启动服务。
 
 ## 备份范围
 
 | 路径 | 是否必需 | 说明 |
 | --- | --- | --- |
 | `/var/lib/qingjuan` | 必需 | SQLite、书籍文件、任务与导出数据必须保持同一时间点 |
-| `/etc/qingjuan` | 迁移时建议 | 含敏感连接与管理配置，必须加密保存 |
+| `/etc/qingjuan/backend.env` | v2.0.0 必需 | 含独立稳定的 2FA 加密密钥，必须与数据库配套、加密保存 |
+| `/etc/qingjuan` 其余文件 | 迁移时建议 | 含连接与管理配置，必须加密保存 |
 | `/opt/qingjuan/app` | 不必 | 可从 Git 重新克隆；本地改动应通过 Git 单独管理 |
 | `/opt/qingjuan/venv` | 不必 | 可由依赖文件重建 |
 
@@ -19,11 +20,12 @@
 sudo install -d -m 0700 /srv/backup
 sudo systemctl stop qingjuan-backend
 sudo tar -C /var/lib -czf /srv/backup/qingjuan-data.tar.gz qingjuan
+sudo install -m 0600 /etc/qingjuan/backend.env /srv/backup/qingjuan-backend.env
 sudo systemctl start qingjuan-backend
 curl --fail http://127.0.0.1:19453/healthz
 ```
 
-如需迁移连接和管理配置，可额外创建加密备份。不要把 `/etc/qingjuan` 的明文归档上传到普通网盘、源码仓库或聊天工具。
+`qingjuan-backend.env` 与数据归档应作为同一组备份保管。不要把 `/etc/qingjuan` 的明文归档上传到普通网盘、源码仓库或聊天工具。
 
 ## 验证备份
 
@@ -42,10 +44,11 @@ sudo sha256sum /srv/backup/qingjuan-data.tar.gz
 4. 校验目录结构、SQLite 和书籍文件；
 5. 保留当前数据目录的可回滚副本；
 6. 用已验证目录替换 `/var/lib/qingjuan`；
-7. 修正为 `qingjuan` 服务用户可读写的权限；
-8. 启动服务并验证健康检查、管理界面和真实客户端。
+7. 恢复配套的 `/etc/qingjuan/backend.env` 并保持仅 root 可读；
+8. 修正数据目录为 `qingjuan` 服务用户可读写的权限；
+9. 启动服务并验证健康检查、用户登录、2FA、书架归属、管理界面和真实客户端。
 
-不要在服务运行时把数据库和书籍文件分别覆盖到生产目录，也不要只恢复 SQLite 而遗漏书籍文件。
+不要在服务运行时把数据库和书籍文件分别覆盖到生产目录，也不要只恢复 SQLite 而遗漏书籍文件或 2FA 加密密钥。密钥与数据库不匹配时，用户原有 TOTP 配置将无法解密。
 
 ## 迁移服务器
 

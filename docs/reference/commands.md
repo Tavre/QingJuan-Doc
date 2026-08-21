@@ -2,10 +2,9 @@
 
 ## Windows 本机模式
 
-无需部署 Linux 或手动启动 Python。在 **设置 → 后端连接** 中选择 **本机后端**，青卷会按需启动随包后端。管理界面与健康检查地址：
+无需部署 Linux 或手动启动 Python。在 **设置 → 后端连接** 中选择 **本机后端**，青卷会按需启动随包后端。翻译模型与外部 OCR 在客户端 **设置 → 翻译服务** 中配置；本机后端不提供 `/admin/`。健康检查地址：
 
 ```text
-http://127.0.0.1:19453/admin/
 http://127.0.0.1:19453/healthz
 ```
 
@@ -28,6 +27,9 @@ sudo qingjuan-info
 
 # 更新
 sudo bash /opt/qingjuan/app/deploy/linux/update.sh
+
+# 在线升级器最近 100 行日志
+sudo journalctl -u qingjuan-updater -n 100 --no-pager
 
 # 修改管理密码
 sudo qingjuan-password

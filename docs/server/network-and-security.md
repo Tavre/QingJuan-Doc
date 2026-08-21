@@ -1,15 +1,15 @@
 # 网络与安全
 
-本页适用于 Linux 远程模式：远程数据和服务凭据集中在 Linux。安全部署的核心是私网优先、外网 HTTPS、凭据分离、日志脱敏和定期备份。Windows 本机模式只监听回环地址，不需要远程 Token。
+本页适用于 Linux 多用户远程模式：远程数据和服务凭据集中在 Linux。安全部署的核心是私网优先、外网 HTTPS、分层认证、日志脱敏和配套备份。Windows 本机模式只监听回环地址，不需要远程 Token 或用户账号。
 
 ## 推荐拓扑
 
 ```text
 Windows / Android
         │
-        ├─ 局域网或 Tailscale/WireGuard：HTTP + Bearer Token
+        ├─ 局域网或 Tailscale/WireGuard：HTTP + 连接 Token + 用户会话
         │
-        └─ 公网：HTTPS 反向代理 + Bearer Token
+        └─ 公网：HTTPS 反向代理 + 连接 Token + 用户会话
                                   │
                            Linux FastAPI
                                   │
@@ -18,15 +18,17 @@ Windows / Android
 
 HTTP 只适用于可信私有网络。公网访问必须由反向代理终止 TLS；不要直接开放 FastAPI 的明文端口。
 
-## 三类凭据
+## 分层凭据
 
 | 凭据 | 保存位置 | 用途 | 泄露后的处理 |
 | --- | --- | --- | --- |
 | 连接 Token | 服务端受保护文件；客户端安全存储 | 客户端 API Bearer 认证 | 轮换 Token，更新所有客户端 |
+| 用户密码与会话 | 密码只存慢哈希；会话 Token 存客户端安全存储 | 登录并标识独立书架主体 | 重置密码或撤销用户会话 |
 | 管理密码 | 服务端只保存慢哈希 | 浏览器管理界面登录 | 重置密码，使旧会话失效 |
 | 翻译 API 密钥 | Linux 服务端配置 | 调用外部模型服务 | 在服务商处撤销并重新配置 |
+| 2FA 加密密钥 | `/etc/qingjuan/backend.env` | 解密数据库中的 TOTP 密钥 | 从配套备份恢复；不可随意轮换 |
 
-不要把三者复用为同一个值。
+不要复用这些凭据。连接 Token 只保护实例入口，不能替代用户登录；客户端用户管理员也不能使用用户密码登录浏览器管理界面。
 
 ## 地址与同源
 
@@ -42,6 +44,7 @@ HTTP 只适用于可信私有网络。公网访问必须由反向代理终止 TL
 - `/var/lib/qingjuan` 中的数据库、书籍、译文和导出物；
 - `/etc/qingjuan` 中的连接和认证配置；
 - 翻译服务密钥、网站 Cookie、管理会话和连接 Token；
+- 用户会话、SMTP 密码、身份牌、TOTP 密钥与恢复码；
 - 用户导入或下载的正文与图片。
 
 普通日志应只包含任务 ID、阶段、状态码、耗时和脱敏错误。向他人求助前再次检查终端输出和截图。
@@ -81,7 +84,8 @@ sudo qingjuan-info
 - [ ] 公网只暴露 HTTPS；
 - [ ] 服务由单个 systemd 实例、单个 Uvicorn worker 运行；
 - [ ] `/var/lib/qingjuan` 和 `/etc/qingjuan` 权限受限；
-- [ ] 客户端、管理界面和翻译服务使用不同凭据；
+- [ ] 连接 Token、用户会话、管理密码和翻译服务使用不同凭据；
+- [ ] `/var/lib/qingjuan` 与 `/etc/qingjuan/backend.env` 已配套备份；
 - [ ] 局域网模型只通过精确 Origin 白名单授权；
 - [ ] 日志和 Issue 不含密钥、Cookie、正文和服务器绝对路径；
 - [ ] 已建立可验证的离线备份。

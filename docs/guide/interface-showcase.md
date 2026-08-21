@@ -6,7 +6,7 @@ description: 查看青卷 Windows 桌面端与 Android 移动端的书架、作�
 
 # 桌面端与移动端界面展示
 
-青卷在 Windows 与 Android 上共享书架、搜索、下载、翻译、阅读和听书能力，同时针对键鼠宽屏与手机触控分别设计界面。下面的截图来自 v1.7.6；v1.7.7 主要更新后端解析能力，继续沿用这套客户端界面。
+青卷在 Windows 与 Android 上共享搜索、下载、翻译、阅读和听书能力，同时针对键鼠宽屏与手机触控分别设计界面。下面的截图来自 v1.7.6，用于展示两端的基础布局；v2.0.0 在此基础上重构了“我的”页面并加入远程账号与安全入口。
 
 <div class="qj-interface-showcase">
 
@@ -31,7 +31,7 @@ Windows 客户端采用适合宽屏与键鼠的工作区：左侧导航固定展
 
 ## Android 移动端
 
-Android 客户端针对单手触控、安全区与不同屏幕比例设计，使用底部导航组织书架、搜索、书源、任务和个人设置。Android 不包含本机后端，需要连接已部署的 Linux 后端。
+Android 客户端针对单手触控、安全区与不同屏幕比例设计，使用底部导航组织书架、搜索、书源、任务和“我的”。Android 不包含本机后端，需要连接已部署的 Linux 后端并登录用户账号。
 
 <div class="qj-showcase-grid qj-showcase-grid-mobile">
   <figure class="qj-showcase-card">
