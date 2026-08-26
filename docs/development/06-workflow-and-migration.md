@@ -83,8 +83,8 @@ Dependabot 只维护当前技术栈：
 - 日常调试和重复构建不得修改版本号；只有准备形成新的发布更新时才执行递增。
 - 修改版本后必须验证 Android `versionName` / `versionCode`、FastAPI 元数据与 Windows 文件属性均来自同一版本源，禁止在
   Dart、Python、Kotlin、C++ 或发布脚本中新增独立硬编码版本。
-- 当前已发布基线为 `2.0.0+32`；后续正式发布的 build 必须大于 `32`，不得回退版本或复用已发布 build。
-- `2.0.0+32` 引入 Linux 多用户、账号安全和受控在线升级，同时保持 Windows 本机单用户兼容，对外标签为 `v2.0.0`。
+- 当前已发布基线为 `2.0.1+33`；后续正式发布的 build 必须大于 `33`，不得回退版本或复用已发布 build。
+- `2.0.2+34` 为本次发布候选，面向移动端阅读体验优化（性能与书页稳定性），对外标签 `v2.0.2`。
 
 发布前：
 
@@ -101,8 +101,8 @@ Dependabot 只维护当前技术栈：
 `.github/workflows/release.yml`：
 
 ```powershell
-git tag v2.0.0
-git push origin v2.0.0
+git tag v2.0.2
+git push origin v2.0.2
 ```
 
 发布工作流重新执行 Flutter 格式化、分析、测试，执行 `python -m ruff check app tests` 与
