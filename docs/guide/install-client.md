@@ -6,7 +6,7 @@
 
 打开 [QingJuan Releases](https://github.com/qingscroll/QingJuan/releases/latest)，下载与你的平台对应的主文件和 `.sha256` 校验文件。
 
-本页的安装包文件名按当前正式版 `v2.0.0` 编写。Windows x64 ZIP、Android APK 与两份 SHA-256 校验文件由正式发布工作流生成。使用远程模式时，客户端与服务端应同时升级到 v2.0.0，以使用用户登录与独立书架。
+本页的安装包文件名按当前正式版 `v2.0.2` 编写。Windows x64 ZIP、Android APK 与两份 SHA-256 校验文件由正式发布工作流生成。使用远程模式时，客户端与服务端应同时升级到 v2.0.2，以使用用户登录与独立书架。
 
 ## 校验下载文件
 
@@ -15,15 +15,15 @@
 Windows PowerShell：
 
 ```powershell
-Get-FileHash .\QingJuan-v2.0.0-windows-x64.zip -Algorithm SHA256
-Get-Content .\QingJuan-v2.0.0-windows-x64.zip.sha256
+Get-FileHash .\QingJuan-v2.0.2-windows-x64.zip -Algorithm SHA256
+Get-Content .\QingJuan-v2.0.2-windows-x64.zip.sha256
 ```
 
 Android APK 也可以在电脑上校验：
 
 ```powershell
-Get-FileHash .\QingJuan-v2.0.0-android.apk -Algorithm SHA256
-Get-Content .\QingJuan-v2.0.0-android.apk.sha256
+Get-FileHash .\QingJuan-v2.0.2-android.apk -Algorithm SHA256
+Get-Content .\QingJuan-v2.0.2-android.apk.sha256
 ```
 
 两处显示的 64 位十六进制摘要应一致。Linux 或 macOS 可使用 `sha256sum -c <校验文件名>`。
@@ -59,6 +59,6 @@ Windows 包包含 `backend/qingjuan-desktop.exe`，会按需启动本机 FastAPI
 - v1.7.6 可直接安装在 v1.7.5 上，Windows 本机与 Linux 远程后端数据格式均未改变。
 - v1.7.7 可直接升级 v1.7.6；启动后会补充四个新内置解析器及其默认书源记录，不需要手工迁移现有书库。
 - v1.7.8 可直接升级 v1.7.7；Windows 本机模型设置移入客户端，阅读分页改为真实布局测量。
-- v2.0.0 可直接覆盖安装 v1.7.7 或 v1.7.8；Linux 数据库会在首次启动时自动迁移，已有书籍、进度和任务归属内置 `admin` 用户。升级 Linux 前必须配套备份 `/var/lib/qingjuan` 与 `/etc/qingjuan/backend.env`。
+- v2.0.2 可直接覆盖安装 v1.7.7 或 v1.7.8；Linux 数据库会在首次启动时自动迁移，已有书籍、进度和任务归属内置 `admin` 用户。升级 Linux 前必须配套备份 `/var/lib/qingjuan` 与 `/etc/qingjuan/backend.env`。
 
 从 v1.4 升级的 Windows 用户会继续保留既有 Linux 远程配置。若要改为单机使用，请手动选择 **本机后端**。远程连接失败时可重新运行 `sudo qingjuan-info` 核对地址和 Token；不要把 Token 写入命令历史或普通诊断截图。
