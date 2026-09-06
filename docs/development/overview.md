@@ -1,6 +1,6 @@
 # 开发概览
 
-青卷是一个多技术栈仓库：Windows Flutter 客户端可使用随包本机 FastAPI 后端或 Linux 远程后端，Android 只连接 Linux；两端共享业务能力但保持独立的平台界面，React 管理界面随 Linux 后端以静态资源发布。当前稳定版是 `2.0.0+32`。Linux 已升级为多用户服务并加入注册、GitHub 登录、TOTP 2FA、用户管理和在线升级；Windows 本机模式继续使用隐式管理员，不展示远程账号功能。
+青卷是一个多技术栈仓库：Windows Flutter 客户端可使用随包本机 FastAPI 后端或 Linux 远程后端，Android 只连接 Linux；两端共享业务能力但保持独立的平台界面，React 管理界面随 Linux 后端以静态资源发布。当前稳定版是 `2.1.0+40`。Linux 提供多用户、注册、GitHub 登录、TOTP 2FA、用户管理和在线升级；Windows 本机模式继续使用隐式管理员，并在 v2.1.0 新增漫画翻译工作台、书架译文写回和系统托盘。
 
 ## 完整开发规范
 
@@ -38,6 +38,7 @@ QingJuan/
 │  ├─ app/                 应用装配、主题、依赖
 │  ├─ core/                API、模型和跨功能状态
 │  ├─ features/            书架、搜索、阅读、任务、设置等功能
+│  ├─ mobile/              Android 移动端页面、导航和共享视觉
 │  └─ shared/              共享视觉与反馈组件
 ├─ test/                   Dart 与 Widget 测试
 ├─ python-backend/         FastAPI、领域服务和 Python 测试
