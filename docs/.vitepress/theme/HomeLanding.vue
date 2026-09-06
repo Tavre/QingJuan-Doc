@@ -11,8 +11,8 @@
             class="qj-release-note"
             href="/reference/changelog"
           >
-            <span>v2.0.0 正式版</span>
-            Linux 多用户、账号安全与在线升级
+            <span>v2.1.0 正式版</span>
+            漫画翻译工作台、移动端重设计与 Windows 托盘
           </a>
 
           <p class="qj-hero-kicker">QingJuan · 开源小说与漫画阅读工具</p>
@@ -59,7 +59,7 @@
       <div class="qj-section-heading">
         <p>一套能力，两种使用方式</p>
         <h2 id="qj-capabilities-title">从发现内容，到安静读完</h2>
-        <span>当前正式版为 v2.0.0；Windows 本机模式保持免登录，Linux 远程模式升级为多用户服务。</span>
+        <span>当前正式版为 v2.1.0；新增 Windows 漫画翻译工作台、书架译文写回、移动端新界面与系统托盘。</span>
       </div>
 
       <div class="qj-capability-grid">
@@ -96,7 +96,7 @@
           <div>
             <span>Windows</span>
             <strong>宽屏工作区</strong>
-            <p>侧栏导航、书架卡片和完整阅读控制，适合键鼠操作与集中管理。</p>
+          <p>侧栏导航、漫画翻译工作台和完整阅读控制，适合键鼠操作与集中管理。</p>
           </div>
           <img
             src="/screenshots/v1.7.6/windows-bookshelf.png"
@@ -109,7 +109,7 @@
           <div>
             <span>Android</span>
             <strong>随身书架</strong>
-            <p>底部导航、触控操作与沉浸阅读，连接 Linux 后端即可访问共享书库。</p>
+            <p>手机四入口底栏、平板移动侧栏与沉浸阅读，连接 Linux 后端即可访问共享书库。</p>
           </div>
           <img
             src="/screenshots/v1.7.6/android-bookshelf.png"
@@ -137,6 +137,7 @@
           <ul>
             <li>数据位于 <code>backend/data/</code></li>
             <li>在客户端设置模型与外部 OCR</li>
+            <li>漫画翻译工作台与书架译文写回</li>
             <li>Windows 系统 TTS 与键鼠体验</li>
           </ul>
           <a href="/guide/quick-start#windows-单机使用-无需-linux">开始安装 →</a>
