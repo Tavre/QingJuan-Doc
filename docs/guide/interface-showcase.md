@@ -31,7 +31,7 @@ Windows 客户端采用适合宽屏与键鼠的工作区：左侧导航固定展
 
 ## Android 移动端
 
-Android 客户端针对单手触控、安全区与不同屏幕比例设计。v2.1.0 的手机使用紧凑液态胶囊底栏组织“书库、发现、任务、我的”，平板使用移动侧栏和双栏内容；Android 不包含本机后端，需要连接已部署的 Linux 后端并登录用户账号。
+Android 客户端针对单手触控、安全区与不同屏幕比例设计。v2.1.0 的手机使用紧凑液态胶囊底栏组织“书库、发现、任务、我的”，平板使用移动侧栏和双栏内容；Android 不包含本机后端，v2.2.0 可扫描二维码连接同一局域网内的 PC，也可连接已部署的 Linux 后端并登录用户账号。
 
 <div class="qj-showcase-grid qj-showcase-grid-mobile">
   <figure class="qj-showcase-card">

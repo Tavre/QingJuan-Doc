@@ -4,7 +4,7 @@ export default defineConfig({
   lang: 'zh-CN',
   title: '青卷文档',
   titleTemplate: ':title | 青卷文档',
-  description: '青卷 QingJuan 的 Windows 本机模式、Linux 远程部署、Android 客户端与开发文档。',
+  description: '青卷 QingJuan 的 Windows 本机模式、PC 局域网共享、Linux 远程部署、Android 客户端与开发文档。',
   cleanUrls: true,
   lastUpdated: true,
   head: [
@@ -59,6 +59,7 @@ export default defineConfig({
             { text: '番茄小说', link: '/guide/parsers/fanqie' },
             { text: '起点中文网', link: '/guide/parsers/qidian' },
             { text: '夸克小说', link: '/guide/parsers/quark' },
+            { text: '笔趣阁', link: '/guide/parsers/biqvge' },
             { text: '刺猬猫阅读', link: '/guide/parsers/ciweimao' },
             { text: 'SF 轻小说', link: '/guide/parsers/sfacg' },
             { text: '少年梦阅读', link: '/guide/parsers/shaoniandream' },
@@ -126,7 +127,10 @@ export default defineConfig({
             { text: '架构摘要', link: '/development/architecture' },
             { text: '搭建环境', link: '/development/setup' },
             { text: '测试摘要', link: '/development/testing' },
-            { text: '发布摘要', link: '/development/release' }
+            { text: '发布摘要', link: '/development/release' },
+            { text: '站点插件规范', link: '/development/07-site-plugin-spec' },
+            { text: '客户端更新与安装包', link: '/development/08-client-updates' },
+            { text: '移动端重构规范', link: '/design/mobile-redesign' }
           ]
         }
       ],
@@ -138,6 +142,8 @@ export default defineConfig({
             { text: '常用命令', link: '/reference/commands' },
             { text: '常见问题', link: '/reference/faq' },
             { text: '更新日志', link: '/reference/changelog' },
+            { text: 'v2.2.0', link: '/releases/v2.2.0' },
+            { text: 'v2.1.1', link: '/releases/v2.1.1' },
             { text: 'v2.1.0', link: '/releases/v2.1.0' }
           ]
         }
@@ -147,6 +153,8 @@ export default defineConfig({
           text: '更新日志',
           items: [
             { text: '全部版本', link: '/reference/changelog' },
+            { text: 'v2.2.0', link: '/releases/v2.2.0' },
+            { text: 'v2.1.1', link: '/releases/v2.1.1' },
             { text: 'v2.1.0', link: '/releases/v2.1.0' },
             { text: 'v2.0.2', link: '/releases/v2.0.2' }
           ]
