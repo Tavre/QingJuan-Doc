@@ -19,7 +19,7 @@ Android 复用版本检查，在“我的 → 软件更新”中打开官方 APK
 ```powershell
 ./tool/build_windows.ps1
 ./tool/smoke_test_windows_release.ps1
-./tool/package_windows.ps1 -Tag v2.2.0
+./tool/package_windows.ps1 -Tag v2.2.1
 ./tool/test_windows_installer.ps1
 ```
 
@@ -42,4 +42,3 @@ Windows 后端使用 `deploy/windows/backend.spec` 生成目录式包，入口�
 官方参考：[GitHub Releases API](https://docs.github.com/en/rest/releases/releases#get-the-latest-release)、[Inno Setup AppMutex](https://jrsoftware.org/ishelp/topic_setup_appmutex.htm)、[当前用户安装](https://jrsoftware.org/ishelp/topic_setup_privilegesrequired.htm)。
 
 打包参考：[PyInstaller 目录式与单文件模式](https://pyinstaller.org/en/stable/operating-mode.html)、[Inno 压缩选项](https://jrsoftware.org/ishelp/topic_setup_compression.htm)。
-

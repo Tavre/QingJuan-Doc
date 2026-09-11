@@ -2,9 +2,17 @@
 
 这里记录青卷各版本面向用户的主要变化。GitHub 公开 Release 记录从 v1.1.0 开始；日期按中国标准时间列出。
 
-## v2.2.0（发布候选）
+## v2.2.1（发布候选）
 
-版本号为 `2.2.0+42`，计划标签为 `v2.2.0`。[查看完整更新说明](../releases/v2.2.0.md) · [查看发布 PR #59](https://github.com/qingscroll/QingJuan/pull/59)
+版本号为 `2.2.1+43`，计划标签为 `v2.2.1`。[查看完整更新说明](../releases/v2.2.1.md)
+
+- 修复 TUN / Fake-IP DNS 代理环境中站点抓取被安全策略拒绝的问题；
+- Fake-IP 域名通过加密 DNS 解析真实公网地址，同时继续拒绝私网、环回及其他不安全结果；
+- 截至 2026-09-11 尚无正式 Release。
+
+## v2.2.0
+
+发布于 2026-09-11，版本号为 `2.2.0+42`。[查看完整更新说明](../releases/v2.2.0.md) · [查看 Release](https://github.com/qingscroll/QingJuan/releases/tag/v2.2.0)
 
 ### 更新与安装
 
@@ -28,7 +36,7 @@
 
 - 拆分并优化 Windows 桌面 Shell 与书架，增加书架搜索、最近阅读、刷新和更清晰的状态反馈；
 - Linux 管理界面可开启、关闭或重启业务服务，操作期间管理通道保持在线；
-- 发布范围已通过 403 项 Flutter、568 项 Python 和 62 项管理界面测试。正式 Release 尚待 PR 合并、主分支 CI 和六个资产上传完成。
+- 发布范围通过 403 项 Flutter、568 项 Python 和 62 项管理界面测试；正式 Release 已上传 Windows ZIP、Windows 安装 EXE、Android APK 与三份 SHA-256。
 
 ## v2.1.1
 
