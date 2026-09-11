@@ -6,7 +6,7 @@
 
 打开 [QingJuan Releases](https://github.com/qingscroll/QingJuan/releases/latest)，下载与你的平台对应的主文件和 `.sha256` 校验文件。
 
-本页按 `v2.2.0` 的计划发布资产编写：Windows 安装 EXE、Windows ZIP、Android APK 和三份 SHA-256，共六个文件。当前正式版仍为 `v2.1.1`；在 `v2.2.0` Release 实际出现前，请勿从非官方附件获取候选安装包。
+当前正式版为 [v2.2.0](https://github.com/qingscroll/QingJuan/releases/tag/v2.2.0)：Windows 安装 EXE、Windows ZIP、Android APK 和三份 SHA-256，共六个文件。`2.2.1+43` 仍为发布候选，请勿从非官方附件获取候选安装包。
 
 ## 校验下载文件
 

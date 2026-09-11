@@ -142,6 +142,7 @@ export default defineConfig({
             { text: '常用命令', link: '/reference/commands' },
             { text: '常见问题', link: '/reference/faq' },
             { text: '更新日志', link: '/reference/changelog' },
+            { text: 'v2.2.1', link: '/releases/v2.2.1' },
             { text: 'v2.2.0', link: '/releases/v2.2.0' },
             { text: 'v2.1.1', link: '/releases/v2.1.1' },
             { text: 'v2.1.0', link: '/releases/v2.1.0' }
@@ -153,6 +154,7 @@ export default defineConfig({
           text: '更新日志',
           items: [
             { text: '全部版本', link: '/reference/changelog' },
+            { text: 'v2.2.1', link: '/releases/v2.2.1' },
             { text: 'v2.2.0', link: '/releases/v2.2.0' },
             { text: 'v2.1.1', link: '/releases/v2.1.1' },
             { text: 'v2.1.0', link: '/releases/v2.1.0' },

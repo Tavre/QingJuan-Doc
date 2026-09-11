@@ -41,6 +41,7 @@ Windows 与 Android 共享业务能力，但不共用同一套顶层布局：
 - v2.1.0 新增 Windows 漫画翻译工作台、漫画书架译文写回和系统托盘，并完成移动端界面重构；同时保留 v2.0.0 引入的多用户、注册、GitHub 登录、TOTP 两步验证、用户管理和在线升级能力；
 - v2.1.1 修复 Android 详情页和阅读器的文字样式继承、加载反馈及窄屏“接着读”布局；
 - v2.2.0 新增客户端在线更新、Windows 安装器、PC 局域网共享与 Android 扫码、可安装站点插件、笔趣阁聚合搜索、少年梦账号登录和禁漫本子号导入；
+- v2.2.1 修复 TUN / Fake-IP DNS 代理环境中的站点抓取，同时保持原有网络安全边界；
 - 调整窗口宽度只会改变当前平台内部的排版，不会把 Windows 界面切换成 Android 布局。
 
 可在[桌面端与移动端界面展示](./interface-showcase.md)中查看两端的书架、作品详情与阅读器截图。
@@ -48,7 +49,7 @@ Windows 与 Android 共享业务能力，但不共用同一套顶层布局：
 v2.2.0 继续提供可独立启停的内置解析器，并支持安装可信的 `.qjplugin` / `.zip` 站点插件。Windows 本机模式在客户端 **插件配置** 中管理；Linux 远程模式在服务器管理界面的 **插件管理** 中管理，Android 可使用当前后端已安装的插件，但不提供代码安装入口。完整清单见[书源、插件与搜索](./sources-and-search.md)。
 
 ::: info 版本状态
-当前正式版是 [v2.1.1](https://github.com/qingscroll/QingJuan/releases/tag/v2.1.1)，版本号为 `2.1.1+41`。`2.2.0+42` 已进入发布候选阶段；正式发布后将提供 Windows ZIP、Windows 安装 EXE、Android APK 与三份 SHA-256 校验文件。
+当前正式版是 [v2.2.0](https://github.com/qingscroll/QingJuan/releases/tag/v2.2.0)，版本号为 `2.2.0+42`。`2.2.1+43` 为发布候选，主要修复 TUN / Fake-IP DNS 代理环境中的站点抓取。
 :::
 
 ## 适合谁

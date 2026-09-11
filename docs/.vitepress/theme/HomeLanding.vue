@@ -11,8 +11,8 @@
             class="qj-release-note"
             href="/reference/changelog"
           >
-            <span>v2.2.0 发布候选</span>
-            在线更新、Windows 安装器、手机扫码与站点插件
+            <span>v2.2.1 发布候选</span>
+            修复 TUN / Fake-IP DNS 代理环境中的站点抓取
           </a>
 
           <p class="qj-hero-kicker">QingJuan · 开源小说与漫画阅读工具</p>
@@ -59,7 +59,7 @@
       <div class="qj-section-heading">
         <p>一套能力，两种使用方式</p>
         <h2 id="qj-capabilities-title">从发现内容，到安静读完</h2>
-        <span>v2.2.0 正在发布准备中；新增在线更新、Windows 安装器、PC 局域网共享与可安装站点插件。</span>
+        <span>v2.2.0 已正式发布；v2.2.1 将修复 TUN / Fake-IP DNS 代理环境中的站点抓取。</span>
       </div>
 
       <div class="qj-capability-grid">
