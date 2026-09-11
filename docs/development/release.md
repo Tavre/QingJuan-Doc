@@ -7,10 +7,10 @@
 `pubspec.yaml` 使用 `主版本.次版本.修订号+构建号`，例如：
 
 ```yaml
-version: 2.1.0+40
+version: 2.2.0+42
 ```
 
-Git 标签和公开版本省略构建号：`v2.1.0`。标签中的语义版本必须与 `pubspec.yaml` 一致。
+Git 标签和公开版本省略构建号：`v2.2.0`。标签中的语义版本必须与 `pubspec.yaml` 一致。
 
 ## CI 门禁
 
@@ -36,10 +36,12 @@ Pull Request、主分支推送和手动触发会运行：
 6. 观察标签触发的发布工作流直到完成；
 7. 打开 GitHub Release，确认所有资产可下载且摘要匹配。
 
-当前发布应包含四个资产：
+v2.2.0 起，当前发布应包含六个资产：
 
 - `QingJuan-vX.Y.Z-windows-x64.zip`；
 - Windows ZIP 的 `.sha256`；
+- `QingJuan-vX.Y.Z-windows-x64-setup.exe`；
+- Windows 安装 EXE 的 `.sha256`；
 - `QingJuan-vX.Y.Z-android.apk`；
 - Android APK 的 `.sha256`。
 
@@ -48,9 +50,10 @@ Pull Request、主分支推送和手动触发会运行：
 - 从 Release 页面重新下载，而不是复用本机构建目录；
 - 校验两种主文件的 SHA-256；
 - 在干净目录解压 Windows ZIP；
+- 运行 Windows 安装器，验证首次安装、覆盖升级、等待客户端退出、卸载及 `backend/data/` 保留；
 - 安装 Release APK；
-- Windows 分别启动随包本机后端和连接真实 Linux 后端，Android 连接真实 Linux 后端，完成最小用户流程；
+- Windows 分别启动随包本机后端和连接真实 Linux 后端；Android 分别验证 PC 局域网扫码和真实 Linux 后端，完成最小用户流程；
 - 确认 Windows ZIP 包含 `backend/qingjuan-desktop.exe`，但不含数据库、Token、签名材料、Cookie 或开发密钥；
 - 检查 Release 不是草稿或预发布，并记录工作流最终状态。
 
-当前已发布版本是 [`v2.1.0`](https://github.com/qingscroll/QingJuan/releases/tag/v2.1.0)，版本号为 `2.1.0+40`。Release 不是草稿或预发布；Windows x64 ZIP、Android APK 与两份 SHA-256 资产已经上传。
+当前已发布版本是 [`v2.1.1`](https://github.com/qingscroll/QingJuan/releases/tag/v2.1.1)，版本号为 `2.1.1+41`。`2.2.0+42` 是发布候选；在 PR 合并、主分支 CI 通过并上传六个资产前，不得将其描述为已发布。完整更新与安装安全约束见[客户端在线更新与 Windows 安装包](./08-client-updates.md)。

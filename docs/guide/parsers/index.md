@@ -1,6 +1,6 @@
 # 内置解析器
 
-青卷 v2.0.0 随后端提供 26 个内置站点解析器。每个解析器都有独立的稳定 ID、匹配域名、作品类型、能力和启停状态；它们与用户导入的 Legado / 阅读 App JSON 书源相互独立。v1.7.7 新增刺猬猫阅读、SF 轻小说、少年梦阅读和 E-Hentai，并统一目录访问标记与章节正文的处理规则；v2.0.0 保持这套解析器清单。
+青卷 v2.2.0 随后端提供 27 个内置站点解析器。每个解析器都有独立的稳定 ID、匹配域名、作品类型、能力和启停状态；它们与用户导入的 Legado / 阅读 App JSON 书源相互独立。v2.2.0 新增笔趣阁聚合解析器，并允许另外安装可信的 `.qjplugin` / `.zip` 站点插件包。
 
 ## 解析器清单
 
@@ -9,9 +9,10 @@
 | 小说 | [番茄小说](./fanqie.md) | `fanqie` | `fanqienovel.com` | 搜索、按需下载、扫码 / Cookie 登录、账号书架 |
 | 小说 | [起点中文网](./qidian.md) | `qidian` | `qidian.com` | 搜索、完整目录、按需下载、扫码登录、账号书架 |
 | 小说 | [夸克小说](./quark.md) | `quark` | `shuqi.com`、`novel.quark.cn` | 搜索、完整目录、按需读取可取得正文 |
+| 小说 | [笔趣阁](./biqvge.md) | `biqvge` | `txt80.net`、`b520.cc`、`blqukan.cc` | 聚合搜索、目录、章节、按需下载 |
 | 轻小说 | [刺猬猫阅读](./ciweimao.md) | `ciweimao` | `ciweimao.com` | 搜索、分卷目录、加密正文解析 |
 | 轻小说 | [SF 轻小说](./sfacg.md) | `sfacg` | `sfacg.com` | 搜索、完整分卷目录、章节正文 |
-| 小说 | [少年梦阅读](./shaoniandream.md) | `shaoniandream` | `shaoniandream.com` | 搜索、分卷目录、加密正文解析 |
+| 小说 | [少年梦阅读](./shaoniandream.md) | `shaoniandream` | `shaoniandream.com` | 搜索、分卷目录、加密正文解析、账号登录 |
 | 小说 | [Kakuyomu](./kakuyomu.md) | `kakuyomu` | `kakuyomu.jp` | 搜索 |
 | 小说 | [Syosetu](./syosetu.md) | `syosetu` | `syosetu.com` | 公开作品目录与章节 |
 | 小说 | [Novel18](./novel18.md) | `novel18` | `novel18.syosetu.com` | 年龄限制站点的公开内容 |
@@ -20,7 +21,7 @@
 | 小说 | [Alphapolis](./alphapolis.md) | `alphapolis` | `alphapolis.co.jp` | 目录与章节 |
 | 轻小说 | [Linovelib / Bilinovel](./linovelib.md) | `linovelib` | `linovelib.com`、`bilinovel.com` | 分卷与插图章节 |
 | 小说 / 插画 | [Pixiv](./pixiv.md) | `pixiv` | `pixiv.net` | 小说、系列与多页插画 |
-| 漫画 | [18Comic](./18comic.md) | `18comic` | `18comic.vip` | 搜索 |
+| 漫画 | [18Comic](./18comic.md) | `18comic` | `18comic.vip` | 搜索、纯数字本子号导入 |
 | 漫画 | [Bika Web App](./bika.md) | `bika` | `bikawebapp.com` | 搜索；需要站点凭据 |
 | 漫画 | [E-Hentai](./ehentai.md) | `ehentai` | `e-hentai.org`、`exhentai.org` | 搜索、画廊元数据与可取得原图 |
 | 漫画 | [Pixiv Comic](./pixiv-comic.md) | `pixiv-comic` | `comic.pixiv.net` | 公开章节与图片 |
@@ -37,9 +38,9 @@
 
 - **预览**：读取作品标题、作者、封面等可用元数据；预览能力不表示一定有目录或章节；
 - **章节**：读取当前网络和账号有权访问的章节正文或图片；
-- **搜索**：解析器后端可以查询作品。v1.7.0 主搜索页直接提供“书源、夸克、番茄、起点”四项；其他标注搜索的解析器暂不单列为主搜索引擎；
+- **搜索**：解析器后端可以查询作品。v2.2.0 主搜索页提供“导入插件、书源、夸克、番茄、起点、笔趣阁”；其他标注搜索的内置解析器暂不单列；
 - **按需下载**：先保存目录，阅读时缓存当前章节并预取后续章节；
-- **账号登录 / 书架导入**：当前仅番茄与起点支持，详见[账号书架流程](../sources-and-search.md#番茄与起点账号书架)。
+- **账号登录 / 书架导入**：番茄与起点支持账号登录和书架导入；少年梦支持账号登录，不提供账号书架同步。详见[书源、插件与搜索](../sources-and-search.md)。
 
 ## 访问标记与可解析内容
 
@@ -53,9 +54,12 @@ v1.7.7 起，VIP、订阅、付费、登录或其他访问状态会保留在目�
 | --- | --- |
 | Windows 本机后端 | 客户端左侧导航的 **插件配置** |
 | Windows 连接 Linux | Linux 管理界面的 `/admin/#plugins` |
-| Android | 由所连接 Linux 服务的管理员在 `/admin/#plugins` 管理 |
+| Android 连接 PC | 使用 PC 本机后端已经安装和启用的插件 |
+| Android 连接 Linux | 由所连接 Linux 服务的管理员在 `/admin/#plugins` 管理 |
 
 停用解析器后，后端会在新的第三方请求发出前拒绝对应的预览、搜索和章节抓取；已缓存到当前书库的章节仍可阅读。
+
+导入插件与内置解析器使用相同的作品预览、章节下载和缓存链路，但导入包是运行在后端进程内的 Python 代码，不是沙箱。安装和开发要求见[站点插件规范](../../development/07-site-plugin-spec.md)。
 
 ::: warning 使用边界
 解析器不会绕过登录、购买、年龄、地区或版权限制。站点页面结构和公开策略可能变化；请只保存你有权访问的内容。

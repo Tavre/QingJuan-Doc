@@ -2,17 +2,17 @@
 
 <span class="qj-kicker">产品概览</span>
 
-青卷是一套面向小说与漫画的开源工具。Windows ZIP 自带本机 FastAPI 后端，可以在一台电脑上独立使用；Windows 也可以切换到 Linux 远程后端。Android 是远程客户端，需要连接 Linux 后端。
+青卷是一套面向小说与漫画的开源工具。Windows 安装包和 ZIP 自带本机 FastAPI 后端，可以在一台电脑上独立使用；Windows 也可以切换到 Linux 远程后端。Android 是远程客户端，可连接 Linux，也可在 v2.2.0 中通过局域网二维码连接 PC 共享的本机后端。
 
-因此，**只在 Windows 上使用青卷时无需部署或连接 Linux 服务器**。只有使用 Android，或希望 Windows 与 Android 登录同一账号访问远程书库时，才需要部署 Linux 服务。
+因此，**Windows 单机使用和 Android 连接同一局域网内的 PC 都无需部署 Linux 服务器**。只有需要后端长期在线、公网 HTTPS、多用户隔离，或希望设备不依赖 PC 运行时，才需要部署 Linux 服务。
 
 ## 工作方式
 
 | 层级 | 负责什么 | 不负责什么 |
 | --- | --- | --- |
 | Windows 客户端与本机后端 | 书架、搜索、阅读、SQLite、下载、OCR、翻译、任务；在客户端维护模型设置 | 本机数据不会自动同步到 Linux，也不启用远程账号功能 |
-| Android 客户端 | 书架、搜索、阅读、文件选择、设备 TTS、主题与阅读偏好 | 不包含或启动 Python 后端 |
-| Linux FastAPI 服务 | 为 Windows 远程模式和 Android 保存书库、执行任务并提供管理界面 | Windows 单机使用时不是必需项 |
+| Android 客户端 | 书架、搜索、阅读、文件选择、设备 TTS、主题与阅读偏好；连接 PC 局域网共享或 Linux | 不包含或启动 Python 后端 |
+| Linux FastAPI 服务 | 为 Windows 与 Android 提供长期在线、多用户书库并执行任务，附带管理界面 | Windows 单机或 Android 连接 PC 时不是必需项 |
 | 外部服务 | 作品来源、OpenAI 兼容翻译接口 | 不应收到连接 Token、管理密码或无关数据 |
 
 Windows 本机模式的工作方式：
@@ -21,8 +21,9 @@ Windows 本机模式的工作方式：
 2. 客户端按需启动 ZIP 内的 `backend/qingjuan-desktop.exe`。
 3. 本机后端固定监听 `http://127.0.0.1:19453`，不需要连接 Token。
 4. 书库、任务和设置保存在解压目录的 `backend/data/`。
+5. 如需让手机共用这份书库，可在 **设置 → 手机连接** 生成受保护的局域网二维码。
 
-远程模式下，Windows 或 Android 先使用地址与连接 Token 进入 Linux 服务，再注册或登录用户账号。同一账号可在多台设备访问自己的书架、任务和阅读进度；不同账号的数据相互隔离。
+连接 Linux 时，Windows 或 Android 先使用地址与连接 Token 进入服务，再注册或登录用户账号。同一账号可在多台设备访问自己的书架、任务和阅读进度；不同账号的数据相互隔离。Android 扫描 PC 本机模式二维码时则直接使用 PC 的单用户书库，不需要另建账号。
 
 ## 平台界面
 
@@ -38,19 +39,21 @@ Windows 与 Android 共享业务能力，但不共用同一套顶层布局：
 - v1.7.7 新增刺猬猫、SF 轻小说、少年梦和 E-Hentai 解析器，并统一完整目录与访问状态章节的处理规则；
 - v1.7.8 将 Windows 本机模型与 OCR 设置移入客户端，并按真实排版测量分页；
 - v2.1.0 新增 Windows 漫画翻译工作台、漫画书架译文写回和系统托盘，并完成移动端界面重构；同时保留 v2.0.0 引入的多用户、注册、GitHub 登录、TOTP 两步验证、用户管理和在线升级能力；
+- v2.1.1 修复 Android 详情页和阅读器的文字样式继承、加载反馈及窄屏“接着读”布局；
+- v2.2.0 新增客户端在线更新、Windows 安装器、PC 局域网共享与 Android 扫码、可安装站点插件、笔趣阁聚合搜索、少年梦账号登录和禁漫本子号导入；
 - 调整窗口宽度只会改变当前平台内部的排版，不会把 Windows 界面切换成 Android 布局。
 
 可在[桌面端与移动端界面展示](./interface-showcase.md)中查看两端的书架、作品详情与阅读器截图。
 
-v2.1.0 仍包含可独立启停的内置解析器，并在搜索页提供书源及多个直接搜索引擎。Windows 本机模式在客户端 **插件配置** 中管理；Linux 远程模式在服务器管理界面的 **插件管理** 中管理，Android 不显示本地插件入口。完整清单见[内置解析器](./parsers/)。
+v2.2.0 继续提供可独立启停的内置解析器，并支持安装可信的 `.qjplugin` / `.zip` 站点插件。Windows 本机模式在客户端 **插件配置** 中管理；Linux 远程模式在服务器管理界面的 **插件管理** 中管理，Android 可使用当前后端已安装的插件，但不提供代码安装入口。完整清单见[书源、插件与搜索](./sources-and-search.md)。
 
 ::: info 版本状态
-当前正式版是 [v2.1.0](https://github.com/qingscroll/QingJuan/releases/tag/v2.1.0)，版本号为 `2.1.0+40`。Windows x64 ZIP、Android APK 与两份 SHA-256 校验文件由正式发布工作流生成。
+当前正式版是 [v2.1.1](https://github.com/qingscroll/QingJuan/releases/tag/v2.1.1)，版本号为 `2.1.1+41`。`2.2.0+42` 已进入发布候选阶段；正式发布后将提供 Windows ZIP、Windows 安装 EXE、Android APK 与三份 SHA-256 校验文件。
 :::
 
 ## 适合谁
 
-青卷既适合只想在一台 Windows 电脑上直接使用的人，也适合愿意维护 Linux 主机、希望在 Windows 与 Android 之间共用书库的人。
+青卷既适合只想在一台 Windows 电脑上直接使用的人，也适合希望手机临时连接 PC 共用书库，或愿意维护 Linux 主机实现长期在线与多用户隔离的人。
 
 “无需 Linux”不等于所有功能都完全离线：从网站下载内容和调用翻译模型仍需要网络，但后端可以完全运行在当前 Windows 电脑上。
 
@@ -59,7 +62,7 @@ v2.1.0 仍包含可独立启停的内置解析器，并在搜索页提供书源�
 | 平台 | 当前范围 |
 | --- | --- |
 | Windows | Windows 10 / 11 x64；支持随包本机后端或 Linux 远程后端 |
-| Android | Android 8.0（API 26）或更高版本的手机和平板客户端 |
+| Android | Android 8.0（API 26）或更高版本；连接 PC 局域网共享或 Linux 远程后端 |
 | Linux | 可选的 x86_64、systemd、Python 3.11+ 多用户远程服务端 |
 
 目前不支持 iOS、macOS 客户端、Android 本地后端、面向读者的 Web/PWA 客户端或集群部署。
@@ -67,7 +70,8 @@ v2.1.0 仍包含可独立启停的内置解析器，并在搜索页提供书源�
 ## 从哪里开始
 
 - Windows 单机使用：跟随[五分钟开始](./quick-start.md#windows-单机使用-无需-linux)安装并选择本机后端。
-- Android 或跨设备使用：完成[Linux 服务端部署](../server/deploy.md)，再查看[选择与连接后端](./connect-server.md)。
+- Android 连接 PC：查看[手机扫码连接 PC](./connect-server.md#手机扫码连接-pc)，无需部署 Linux。
+- 长期在线或多用户：完成[Linux 服务端部署](../server/deploy.md)，再查看[选择与连接后端](./connect-server.md)。
 - 负责运维：从[准备服务器](../server/requirements.md)开始。
 - 想参与开发：先读[开发概览](../development/overview.md)和源码仓库中的权威开发规范。
 

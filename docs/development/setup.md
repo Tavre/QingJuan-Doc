@@ -42,7 +42,9 @@ flutter run -d windows
 flutter run -d <Android设备ID>
 ```
 
-Windows 本机模式会使用本机后端生命周期基础设施：开发态可从源码树启动 Python，正式包只启动随包 `backend/qingjuan-desktop.exe`。只调试远程模式时可连接测试 Linux 后端；Android 始终使用远程模式。
+Windows 本机模式会使用本机后端生命周期基础设施：开发态可从源码树启动 Python，正式包只启动随包 `backend/qingjuan-desktop.exe`。只调试远程模式时可连接测试 Linux 后端；Android 始终作为远程客户端，可连接 Linux，或扫描开发机生成的局域网连接二维码。
+
+构建 v2.2.0 Windows 安装器及验证在线更新时，继续参照[客户端在线更新与 Windows 安装包](./08-client-updates.md)。
 
 ## Python 后端
 
