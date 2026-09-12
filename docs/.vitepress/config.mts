@@ -130,6 +130,11 @@ export default defineConfig({
             { text: '发布摘要', link: '/development/release' },
             { text: '站点插件规范', link: '/development/07-site-plugin-spec' },
             { text: '客户端更新与安装包', link: '/development/08-client-updates' },
+            { text: '书库元数据', link: '/development/09-library-metadata' },
+            { text: '连载追更', link: '/development/10-serial-updates' },
+            { text: '书签、笔记与搜索', link: '/development/11-reading-annotations-search' },
+            { text: '空间与资源配额', link: '/development/12-storage-management' },
+            { text: '翻译质量', link: '/development/13-translation-quality' },
             { text: '移动端重构规范', link: '/design/mobile-redesign' }
           ]
         }
@@ -142,6 +147,7 @@ export default defineConfig({
             { text: '常用命令', link: '/reference/commands' },
             { text: '常见问题', link: '/reference/faq' },
             { text: '更新日志', link: '/reference/changelog' },
+            { text: 'v2.3.0', link: '/releases/v2.3.0' },
             { text: 'v2.2.1', link: '/releases/v2.2.1' },
             { text: 'v2.2.0', link: '/releases/v2.2.0' },
             { text: 'v2.1.1', link: '/releases/v2.1.1' },
@@ -154,6 +160,7 @@ export default defineConfig({
           text: '更新日志',
           items: [
             { text: '全部版本', link: '/reference/changelog' },
+            { text: 'v2.3.0', link: '/releases/v2.3.0' },
             { text: 'v2.2.1', link: '/releases/v2.2.1' },
             { text: 'v2.2.0', link: '/releases/v2.2.0' },
             { text: 'v2.1.1', link: '/releases/v2.1.1' },

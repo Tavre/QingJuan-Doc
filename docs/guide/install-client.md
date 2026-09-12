@@ -6,7 +6,7 @@
 
 打开 [QingJuan Releases](https://github.com/qingscroll/QingJuan/releases/latest)，下载与你的平台对应的主文件和 `.sha256` 校验文件。
 
-当前正式版为 [v2.2.0](https://github.com/qingscroll/QingJuan/releases/tag/v2.2.0)：Windows 安装 EXE、Windows ZIP、Android APK 和三份 SHA-256，共六个文件。`2.2.1+43` 仍为发布候选，请勿从非官方附件获取候选安装包。
+当前版本为 `v2.3.0`（`2.3.0+44`）：Windows 安装 EXE、Windows ZIP、Android APK 和三份 SHA-256，共六个文件。请只从官方 Releases 下载。
 
 ## 校验下载文件
 
@@ -15,25 +15,25 @@
 Windows PowerShell：
 
 ```powershell
-Get-FileHash .\QingJuan-v2.2.0-windows-x64-setup.exe -Algorithm SHA256
-Get-Content .\QingJuan-v2.2.0-windows-x64-setup.exe.sha256
+Get-FileHash .\QingJuan-v2.3.0-windows-x64-setup.exe -Algorithm SHA256
+Get-Content .\QingJuan-v2.3.0-windows-x64-setup.exe.sha256
 
-Get-FileHash .\QingJuan-v2.2.0-windows-x64.zip -Algorithm SHA256
-Get-Content .\QingJuan-v2.2.0-windows-x64.zip.sha256
+Get-FileHash .\QingJuan-v2.3.0-windows-x64.zip -Algorithm SHA256
+Get-Content .\QingJuan-v2.3.0-windows-x64.zip.sha256
 ```
 
 Android APK 也可以在电脑上校验：
 
 ```powershell
-Get-FileHash .\QingJuan-v2.2.0-android.apk -Algorithm SHA256
-Get-Content .\QingJuan-v2.2.0-android.apk.sha256
+Get-FileHash .\QingJuan-v2.3.0-android.apk -Algorithm SHA256
+Get-Content .\QingJuan-v2.3.0-android.apk.sha256
 ```
 
 两处显示的 64 位十六进制摘要应一致。Linux 或 macOS 可使用 `sha256sum -c <校验文件名>`。
 
 ## Windows
 
-推荐运行 `QingJuan-v2.2.0-windows-x64-setup.exe`：
+推荐运行 `QingJuan-v2.3.0-windows-x64-setup.exe`：
 
 1. 选择安装目录；默认是 `%LOCALAPPDATA%\Programs\QingJuan`，无需管理员权限；
 2. 按需创建桌面快捷方式，开始菜单和卸载入口会由安装器维护；

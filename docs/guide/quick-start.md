@@ -6,15 +6,13 @@
 
 ### 1. 下载并解压
 
-从 [GitHub Releases](https://github.com/qingscroll/QingJuan/releases/latest) 下载。v2.2.0 提供：
+从 [GitHub Releases](https://github.com/qingscroll/QingJuan/releases/latest) 下载。v2.3.0 提供：
 
-- `QingJuan-v2.2.0-windows-x64-setup.exe`：推荐的当前用户安装器；
-- `QingJuan-v2.2.0-windows-x64.zip`：免安装压缩包；
+- `QingJuan-v2.3.0-windows-x64-setup.exe`：推荐的当前用户安装器；
+- `QingJuan-v2.3.0-windows-x64.zip`：免安装压缩包；
 - 对应的 `.sha256` 校验文件。
 
-::: info 发布状态
-当前正式版是 [v2.2.0](https://github.com/qingscroll/QingJuan/releases/tag/v2.2.0)，六个发布资产均已上传。`2.2.1+43` 仍为发布候选，请以 Releases 页面提供的正式版本为准。
-:::
+当前版本为 `v2.3.0`（`2.3.0+44`），下载时请同时取得对应的 `.sha256` 文件。
 
 安装器默认安装到 `%LOCALAPPDATA%\Programs\QingJuan`，无需管理员权限，并可创建开始菜单与桌面快捷方式。若选择 ZIP，请完整解压后运行 `qingjuan.exe`；不要只从压缩包预览窗口运行，也不要单独移动 EXE 或删除 `backend/` 目录。
 
@@ -81,7 +79,7 @@ sudo qingjuan-info
 ### 2. 安装并连接客户端
 
 - Windows：解压 Windows ZIP，可在设置中选择 **Linux 远程后端**；
-- Android：安装 `QingJuan-v2.2.0-android.apk`。
+- Android：安装 `QingJuan-v2.3.0-android.apk`。
 
 在 **设置 → 后端连接** 中填写 `qingjuan-info` 显示的 FastAPI 地址和连接 Token，然后保存。地址末尾不要添加 `/api/v1`。
 

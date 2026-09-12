@@ -7,10 +7,10 @@
 `pubspec.yaml` 使用 `主版本.次版本.修订号+构建号`，例如：
 
 ```yaml
-version: 2.2.1+43
+version: 2.3.0+44
 ```
 
-Git 标签和公开版本省略构建号：`v2.2.1`。标签中的语义版本必须与 `pubspec.yaml` 一致。
+Git 标签和公开版本省略构建号：`v2.3.0`。标签中的语义版本必须与 `pubspec.yaml` 一致。
 
 ## CI 门禁
 
@@ -56,4 +56,4 @@ v2.2.0 起，当前发布应包含六个资产：
 - 确认 Windows ZIP 包含 `backend/qingjuan-desktop.exe`，但不含数据库、Token、签名材料、Cookie 或开发密钥；
 - 检查 Release 不是草稿或预发布，并记录工作流最终状态。
 
-当前已发布版本是 [`v2.2.0`](https://github.com/qingscroll/QingJuan/releases/tag/v2.2.0)，版本号为 `2.2.0+42`，六个发布资产已经上传。`2.2.1+43` 是发布候选；在发布变更合并、主分支 CI 通过并上传六个资产前，不得将其描述为已发布。完整更新与安装安全约束见[客户端在线更新与 Windows 安装包](./08-client-updates.md)。
+当前版本为 `v2.3.0`（`2.3.0+44`）。发布时应上传完整的六个资产，并按[客户端在线更新与 Windows 安装包](./08-client-updates.md)验证安装、升级与校验流程。

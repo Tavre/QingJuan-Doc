@@ -27,7 +27,7 @@
 
 覆盖：
 
-- Android 四入口底部导航和 Windows `NavigationPane` 分别覆盖窄宽度与常用宽度；Windows 变窄不得出现移动底栏，
+- Android 五入口底部导航和 Windows `NavigationPane` 分别覆盖窄宽度与常用宽度；Windows 变窄不得出现移动底栏，
   Android 变宽不得切换成 Windows 工作区侧栏；
 - 加载、空、错误和内容状态；
 - 表单校验、按钮禁用、对话框确认；
