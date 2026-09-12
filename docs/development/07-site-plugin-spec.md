@@ -8,7 +8,7 @@
 1. Windows 本机模式：打开 **插件配置 → 导入插件**；Linux：使用管理员登录 **`/admin/#plugins` → 导入插件**。
 2. 选择插件包，核对名称、ID、作者声明、版本及站点。确认信任来源后安装。读取这些信息时后端只校验清单和 Python 语法，不执行插件代码。
 3. 安装成功后立即参与链接匹配；支持搜索的插件可在 Windows / Android 搜索页的 **导入插件** 中使用。远程客户端也能使用已安装插件，但安装和卸载由服务器管理网页负责。
-4. 更新时导入同 ID、更高版本的包，界面展示版本变化。卸载入口位于插件详情或管理表格，内置模块只能停用。
+4. 更新时导入同 ID、更高版本的包，成功后保留上一版本；可在 **插件维护** 中运行不访问站点的自检并显式回退。卸载入口位于插件详情或管理表格，内置模块只能停用。
 
 可立即使用的离线示例位于 `examples/plugins/demo-novel/`。在仓库根目录执行：
 
@@ -24,7 +24,7 @@ python tool/package_site_plugin.py examples/plugins/demo-novel
 **Python 插件在后端进程内运行，不是沙箱。** 插件拥有后端进程的文件、网络及环境访问权限；仅应安装来自可信来源且经过审查的代码。
 作者字段属于自我声明，不是签名认证。SHA-256 用于确认安装记录完整性，不证明作者身份。
 
-- 安装、检查安装包、更新、卸载要求管理员网页会话及 CSRF，或受信任 Windows 本机回环请求及 `X-QingJuan-Local-Request: 1`。
+- 安装、检查安装包、更新、维护自检、回退和卸载要求管理员网页会话及 CSRF，或受信任 Windows 本机回环请求及 `X-QingJuan-Local-Request: 1`。
   普通连接 Token、远程客户端用户会话，即使用户角色为管理员，也不能上传执行代码。
 - 清单/启停沿用原有用户授权。插件代码不接收青卷用户 Token、管理员 Cookie、站点账号会话、模型密钥或数据库对象。
 - 插件应只使用 `context` 发起网络请求。其请求及重定向限制在 `domains + networkDomains`，并复用青卷公网 IP 校验和 DNS 固定机制；
@@ -163,7 +163,7 @@ python tool/package_site_plugin.py examples/plugins/html-novel --output dist/plu
 
 ```powershell
 Set-Location python-backend
-python -m pytest tests/test_plugin_packages.py tests/test_plugin_runtime.py
+python -m pytest tests/test_plugin_packages.py tests/test_plugin_runtime.py tests/test_plugin_maintenance.py
 ```
 
 打包工具仅收集上述两个文件，固定文件顺序与 ZIP 时间戳，相同源码生成相同内容。`--check` 只校验清单、包结构和语法，
@@ -172,10 +172,10 @@ python -m pytest tests/test_plugin_packages.py tests/test_plugin_runtime.py
 
 ## 7. 生命周期与持久化
 
-- 安装包、清单、摘要保存在当前后端 SQLite 的 `site_plugin_packages`；开关保存在既有 `site_plugin_settings`。
-  两者同一事务保存，升级后端保留，备份数据库即可同时备份插件。切换后端不会同步插件。
+- 安装包、清单、摘要保存在当前后端 SQLite 的 `site_plugin_packages`；开关保存在既有 `site_plugin_settings`；上一版本保存在 `site_plugin_package_history`。完整备份包含这些记录，切换后端不会同步插件。
 - 更新必须显式提交 `replace=true` 且版本严格提高；加载失败的记录允许同版本修复。版本/ID/域名冲突、语法、签名、模块加载或保存失败均不会替换旧包和旧运行时。
   Python 顶层副作用无法回滚，因此插件必须遵守无副作用要求。
+- 自检校验当前包摘要、清单、ZIP 结构、Python 语法、协议版本和处理器签名，不重新导入插件、不执行处理器，也不请求第三方站点。回退需要绑定当前版本与摘要的显式确认；有活跃调用或任务时，更新、回退与卸载返回 `409`。
 - 服务启动逐个校验摘要并恢复插件。一项加载失败不会阻止其他模块和后端启动；列表显示 `loadError`，相关操作拒绝执行，可更新修复或卸载。
 - 卸载删除安装包和该插件开关，不删除书籍、缓存正文、图片或阅读进度。未缓存章节需要可用解析器；链接重新按当前注册表匹配。
 - 安装热生效针对后端单进程模型；Linux 继续使用单 worker。不能把该实现部署为多个共享数据库但互不通知的 worker。
@@ -190,6 +190,9 @@ python -m pytest tests/test_plugin_packages.py tests/test_plugin_runtime.py
 | `PUT /plugins/{id}` | `{"enabled":false}` | 保存启停；管理员用户或管理网页 |
 | `POST /plugins/inspect` | multipart `file` | `plugin` 元数据、`installedVersion`、`sha256`；管理网页或受信本机 |
 | `POST /plugins/import` | multipart `file`、可选 `replace` | `201` + 插件元数据；管理网页或受信本机 |
+| `GET /plugins/{id}/maintenance` | 无 | 当前维护报告；管理网页或受信本机 |
+| `POST /plugins/{id}/check` | 无 | 显式运行自检并返回维护报告 |
+| `POST /plugins/{id}/rollback` | 当前版本与包摘要 | 回退到保存的上一版本 |
 | `DELETE /plugins/{id}` | 无 | `204`；管理网页或受信本机 |
 | `POST /plugins/search` | `{"keyword":"青卷","limit":20,"sourceIds":[]}` | 聚合外部插件搜索结果；有效用户 |
 
@@ -200,4 +203,3 @@ python -m pytest tests/test_plugin_packages.py tests/test_plugin_runtime.py
 新增公开元数据：`origin` 为 `builtin` / `installed`，`author` 为作者声明，`apiVersion` 为插件协议版本，`loadError` 可空。
 不返回源代码、包内容、服务器路径或运行时对象。错误使用中文 `detail`：无管理会话 `401`，缺少 CSRF `403`，不存在 `404`，
 重复安装/版本/域名/内置 ID 冲突 `409`，包过大 `413`，格式/加载失败 `422`，存储失败 `503`。
-

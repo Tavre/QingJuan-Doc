@@ -11,8 +11,8 @@
             class="qj-release-note"
             href="/reference/changelog"
           >
-            <span>v2.2.1 发布候选</span>
-            修复 TUN / Fake-IP DNS 代理环境中的站点抓取
+            <span>v2.3.0 功能更新</span>
+            书库追更、离线阅读、备份恢复与翻译校对
           </a>
 
           <p class="qj-hero-kicker">QingJuan · 开源小说与漫画阅读工具</p>
@@ -59,7 +59,7 @@
       <div class="qj-section-heading">
         <p>一套能力，两种使用方式</p>
         <h2 id="qj-capabilities-title">从发现内容，到安静读完</h2>
-        <span>v2.2.0 已正式发布；v2.2.1 将修复 TUN / Fake-IP DNS 代理环境中的站点抓取。</span>
+        <span>v2.3.0 新增书库整理与追更、跨端离线阅读、完整备份恢复和翻译质量管理。</span>
       </div>
 
       <div class="qj-capability-grid">

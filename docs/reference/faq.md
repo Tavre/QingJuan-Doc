@@ -16,7 +16,7 @@
 
 ## 当前应该下载哪个版本？
 
-当前正式版是 [v2.2.0](https://github.com/qingscroll/QingJuan/releases/tag/v2.2.0)，Windows ZIP、Windows 安装 EXE、Android APK 与三份 SHA-256 已全部上传。`2.2.1+43` 尚处于发布候选阶段，正式 Release 出现前请继续下载 v2.2.0。
+当前版本是 `v2.3.0`（`2.3.0+44`）。请从[官方 Releases](https://github.com/qingscroll/QingJuan/releases/latest)下载 Windows ZIP、Windows 安装 EXE 或 Android APK，并核对同名 SHA-256 文件。
 
 ## 开启 TUN 代理后为什么所有站点都无法抓取？
 
